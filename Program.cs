@@ -1,4 +1,9 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using planetnineserver.Data;
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<planetnineservercontext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("planetnineservercontext") ?? throw new InvalidOperationException("Connection string 'planetnineservercontext' not found.")));
 
 // Add services to the container.
 
