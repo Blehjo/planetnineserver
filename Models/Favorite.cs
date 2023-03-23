@@ -1,7 +1,4 @@
-﻿using System;
-using planetnineserver.Interfaces;
-
-namespace planetnineserver.Models
+﻿namespace planetnineserver.Models
 {
 	public class Favorite
 	{

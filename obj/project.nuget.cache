@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "eoumtPtBSWPyKwXGBbtTNt7uZY1JHkCjgUGrHklnjRrU6kJCfGaOj87WDoMUy4vepo2uTErwvqppT+Cjg1y2DA==",
+  "dgSpecHash": "K7VLDPZpltEvS4P8gy0rK9S5tmEUcVsnIkUWk0K+qBqDYI18Vmnmca37S9Puke3Esc5kmxcPgbN7tEQ5fvDs9A==",
   "success": true,
-  "projectFilePath": "/Users/blehjo/projects/planetninesolution/planetnineserver/planetnineserver.csproj",
+  "projectFilePath": "/Users/blehjo/projects/planetnine/planetnineserver/planetnineserver.csproj",
   "expectedPackageFiles": [
+    "/Users/blehjo/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/Users/blehjo/.nuget/packages/azure.core/1.24.0/azure.core.1.24.0.nupkg.sha512",
     "/Users/blehjo/.nuget/packages/azure.identity/1.6.0/azure.identity.1.6.0.nupkg.sha512",
+    "/Users/blehjo/.nuget/packages/bcrypt.net-core/1.6.0/bcrypt.net-core.1.6.0.nupkg.sha512",
     "/Users/blehjo/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/blehjo/.nuget/packages/microsoft.aspnetcore.openapi/7.0.3/microsoft.aspnetcore.openapi.7.0.3.nupkg.sha512",
     "/Users/blehjo/.nuget/packages/microsoft.aspnetcore.razor.language/6.0.11/microsoft.aspnetcore.razor.language.6.0.11.nupkg.sha512",

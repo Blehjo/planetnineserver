@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/blehjo/projects/planetninesolution/planetnineserver/planetnineserver.csproj": {}
+    "/Users/blehjo/projects/planetnine/planetnineserver/planetnineserver.csproj": {}
   },
   "projects": {
-    "/Users/blehjo/projects/planetninesolution/planetnineserver/planetnineserver.csproj": {
+    "/Users/blehjo/projects/planetnine/planetnineserver/planetnineserver.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/blehjo/projects/planetninesolution/planetnineserver/planetnineserver.csproj",
+        "projectUniqueName": "/Users/blehjo/projects/planetnine/planetnineserver/planetnineserver.csproj",
         "projectName": "planetnineserver",
-        "projectPath": "/Users/blehjo/projects/planetninesolution/planetnineserver/planetnineserver.csproj",
+        "projectPath": "/Users/blehjo/projects/planetnine/planetnineserver/planetnineserver.csproj",
         "packagesPath": "/Users/blehjo/.nuget/packages/",
-        "outputPath": "/Users/blehjo/projects/planetninesolution/planetnineserver/obj/",
+        "outputPath": "/Users/blehjo/projects/planetnine/planetnineserver/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/blehjo/.nuget/NuGet/NuGet.Config"
@@ -39,6 +39,14 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "BCrypt.Net-Core": {
+              "target": "Package",
+              "version": "[1.6.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.3, )"
@@ -85,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.200/RuntimeIdentifierGraph.json"
         }
       }
     }

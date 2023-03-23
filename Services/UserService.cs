@@ -26,7 +26,7 @@ namespace planetnineserver.Services
         private readonly IWebHostEnvironment _hostEnvironment;
 
         public UserService(
-            planetnineserver context,
+            planetnineservercontext context,
             IJwtUtils jwtUtils,
             IMapper mapper,
             IWebHostEnvironment hostEnvironment)
@@ -39,7 +39,7 @@ namespace planetnineserver.Services
 
         public AuthenticateResponse Authenticate(AuthenticateRequest model)
         {
-            var user = _context.Users.SingleOrDefault(x => x.Username == model.Username);
+            var user = _context.User.SingleOrDefault(x => x.Username == model.Username);
 
             // validate
             if (user == null)
@@ -56,7 +56,7 @@ namespace planetnineserver.Services
 
         public IEnumerable<User> GetAll()
         {
-            return _context.Users;
+            return _context.User;
         }
 
         public User GetById(int id)
@@ -67,7 +67,7 @@ namespace planetnineserver.Services
         public void Register(RegisterRequest model)
         {
             // validate
-            if (_context.Users.Any(x => x.Username == model.Username))
+            if (_context.User.Any(x => x.Username == model.Username))
                 throw new AppException("Username '" + model.Username + "' is already taken");
 
             // map model to new user object
@@ -77,7 +77,7 @@ namespace planetnineserver.Services
             user.Password = BCrypt.Net.BCrypt.HashPassword(model.Password);
 
             // save user
-            _context.Users.Add(user);
+            _context.User.Add(user);
             _context.SaveChanges();
         }
 
@@ -86,7 +86,7 @@ namespace planetnineserver.Services
             var user = GetUser(id);
 
             // validate
-            if (model.Username != user.Username && _context.Users.Any(x => x.Username == model.Username))
+            if (model.Username != user.Username && _context.User.Any(x => x.Username == model.Username))
                 throw new AppException("Username '" + model.Username + "' is already taken");
 
             // hash password if it was entered
@@ -95,14 +95,14 @@ namespace planetnineserver.Services
 
             // copy model to user and save
             _mapper.Map(model, user);
-            _context.Users.Update(user);
+            _context.User.Update(user);
             _context.SaveChanges();
         }
 
         public void Delete(int id)
         {
             var user = GetUser(id);
-            _context.Users.Remove(user);
+            _context.User.Remove(user);
             _context.SaveChanges();
         }
 
@@ -110,7 +110,7 @@ namespace planetnineserver.Services
 
         private User GetUser(int id)
         {
-            var user = _context.Users.Find(id);
+            var user = _context.User.Find(id);
             if (user == null) throw new KeyNotFoundException("User not found");
             return user;
         }

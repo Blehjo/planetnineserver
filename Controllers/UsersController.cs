@@ -6,11 +6,6 @@ using planetnineserver.Helpers;
 using planetnineserver.Models.Users;
 using planetnineserver.Services;
 using planetnineserver.Models;
-using Microsoft.AspNetCore.Http;
-using Azure;
-using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
-using static OpenAI.GPT3.ObjectModels.SharedModels.IOpenAiModels;
 
 namespace planetnineserver.Controllers
 {

@@ -21,18 +21,22 @@ namespace planetnineserver.Controllers
             _context = context;
         }
 
-        // GET: api/message
+        // GET: api/Message
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Message>>> GetMessage()
+        public async Task<ActionResult<IEnumerable<Message>>> GetMessages()
         {
           if (_context.Message == null)
           {
               return NotFound();
           }
-            return await _context.Message.ToListAsync();
+            var userId = Int32.Parse(HttpContext.Request.Cookies["user"]);
+
+            var user = await _context.User.FindAsync(userId);
+
+            return await _context.Message.Where(m => m.UserId == userId || m.MessageValue == user.Username).ToListAsync();
         }
 
-        // GET: api/message/5
+        // GET: api/Message/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Message>> GetMessage(int id)
         {
@@ -50,7 +54,7 @@ namespace planetnineserver.Controllers
             return message;
         }
 
-        // PUT: api/message/5
+        // PUT: api/Message/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMessage(int id, Message message)
@@ -81,22 +85,33 @@ namespace planetnineserver.Controllers
             return NoContent();
         }
 
-        // POST: api/message
+        // POST: api/Message
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Message>> PostMessage(Message message)
         {
           if (_context.Message == null)
           {
-              return Problem("Entity set 'planetnineservercontext.Message'  is null.");
+              return Problem("Entity set 'KalanchoeAIDatabaseContext.Messages'  is null.");
           }
+
+            var userId = Int32.Parse(Request.Cookies["user"]);
+
+            var returnedMessage = _context.Message.Where(m => m.MessageValue == message.MessageValue && m.UserId == userId);
+
+            if (returnedMessage.Count() > 0)
+            {
+                return CreatedAtAction("GetMessage", returnedMessage);
+            }
+
+            message.UserId = userId;
             _context.Message.Add(message);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetMessage", new { id = message.MessageId }, message);
         }
 
-        // DELETE: api/message/5
+        // DELETE: api/Message/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMessage(int id)
         {

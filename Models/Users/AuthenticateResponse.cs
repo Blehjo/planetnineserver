@@ -1,6 +1,4 @@
-﻿using planetnineserver.Models;
-
-namespace planetnineserver.Models.Users
+﻿namespace planetnineserver.Models.Users
 {
 	public class AuthenticateResponse
 	{
