@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jtVfUFC7praNX0sxff8wmEHmWs0SuJ10VRF8hl+N354JEz8ym0m5zH4hm6XQwiCdMkRtlsCzlPQm5+Y8XjhH6g==",
+  "dgSpecHash": "eoumtPtBSWPyKwXGBbtTNt7uZY1JHkCjgUGrHklnjRrU6kJCfGaOj87WDoMUy4vepo2uTErwvqppT+Cjg1y2DA==",
   "success": true,
-  "projectFilePath": "/Users/blehjo/projects/planetnine/planetnineserver/planetnineserver.csproj",
+  "projectFilePath": "/Users/blehjo/projects/planetninesolution/planetnineserver/planetnineserver.csproj",
   "expectedPackageFiles": [
     "/Users/blehjo/.nuget/packages/azure.core/1.24.0/azure.core.1.24.0.nupkg.sha512",
     "/Users/blehjo/.nuget/packages/azure.identity/1.6.0/azure.identity.1.6.0.nupkg.sha512",
