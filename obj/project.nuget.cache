@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "K7VLDPZpltEvS4P8gy0rK9S5tmEUcVsnIkUWk0K+qBqDYI18Vmnmca37S9Puke3Esc5kmxcPgbN7tEQ5fvDs9A==",
+  "dgSpecHash": "E6y15wSPvnZlLuQPq94JBld5VZdNnKA+nwLOZIyuDagQDvsZwGwQnDHxUwpcQbayoKaM7mvKzvFCchls5bSB9Q==",
   "success": true,
-  "projectFilePath": "/Users/blehjo/projects/planetnine/planetnineserver/planetnineserver.csproj",
+  "projectFilePath": "/Users/blehjo/projects/planetninesolution/planetnineserver/planetnineserver.csproj",
   "expectedPackageFiles": [
     "/Users/blehjo/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/Users/blehjo/.nuget/packages/azure.core/1.24.0/azure.core.1.24.0.nupkg.sha512",
