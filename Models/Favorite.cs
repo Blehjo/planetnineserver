@@ -1,4 +1,6 @@
-﻿namespace planetnineserver.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace planetnineserver.Models
 {
 	public class Favorite
 	{
@@ -7,6 +9,8 @@
 		public int ContentId { get; set; }
 
         public string ContentType { get; set; }
-	}
-}
 
+        [DataType(DataType.Date)]
+        public DateTime DateCreated { get; set; } = DateTime.UtcNow;
+    }
+}
