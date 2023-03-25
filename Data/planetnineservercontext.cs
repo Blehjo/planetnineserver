@@ -31,5 +31,9 @@ namespace planetnineserver.Data
         public DbSet<planetnineserver.Models.Planet> Planet { get; set; } = default!;
 
         public DbSet<planetnineserver.Models.Post> Post { get; set; } = default!;
+
+        public DbSet<planetnineserver.Models.Chat> Chats { get; set; } = default!;
+
+        public DbSet<planetnineserver.Models.ChatComment> ChatComments { get; set; } = default!;
     }
 }
