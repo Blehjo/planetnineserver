@@ -31,6 +31,7 @@ namespace KalanchoeAI_Backend.Controllers
             {
                 ChatCommentId = x.ChatCommentId,
                 ChatValue = x.ChatValue,
+                MediaLink = x.MediaLink,
                 DateCreated = x.DateCreated,
                 ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ChatValue)
             }).ToListAsync();
@@ -48,6 +49,7 @@ namespace KalanchoeAI_Backend.Controllers
             {
                 ChatCommentId = x.ChatCommentId,
                 ChatValue = x.ChatValue,
+                MediaLink = x.MediaLink,
                 DateCreated = x.DateCreated,
                 ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ChatValue)
             }).ToListAsync();
@@ -114,7 +116,7 @@ namespace KalanchoeAI_Backend.Controllers
 
             if (chatComment.ImageFile != null)
             {
-                chatComment.ChatValue = await SaveImage(chatComment.ImageFile);
+                chatComment.MediaLink = await SaveImage(chatComment.ImageFile);
             }
 
             _context.ChatComments.Add(chatComment);

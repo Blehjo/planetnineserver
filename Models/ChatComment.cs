@@ -7,7 +7,11 @@ namespace planetnineserver.Models
 	{
         public int ChatCommentId { get; set; }
 
-        public string ChatValue { get; set; }
+        public string? ChatValue { get; set; }
+
+        public string? MediaLink { get; set; }
+
+        public string? Type { get; set; } = "ChatComment";
 
         [NotMapped]
         public IFormFile? ImageFile { get; set; }
