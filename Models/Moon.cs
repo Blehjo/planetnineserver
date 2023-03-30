@@ -5,6 +5,8 @@ namespace planetnineserver.Models
 	public class Moon
 	{
 		public int MoonId { get; set; }
+        
+        public string MoonName { get; set; }
 
         public float MoonMass { get; set; }
 
