@@ -51,10 +51,6 @@
               "target": "Package",
               "version": "[1.6.0, )"
             },
-            "BCrypt.Net-Next": {
-              "target": "Package",
-              "version": "[4.0.3, )"
-            },
             "Betalgo.OpenAI.GPT3": {
               "target": "Package",
               "version": "[6.8.3, )"

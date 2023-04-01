@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/BFuzI7fwoy749Owl+BSLlbqZ3hNHnkVH022CSTUNR9uJ5lDqabKI75JUn4TK9sZ5WGvvFmvJnEZuG88cu2ZhQ==",
+  "dgSpecHash": "LWPTPO1BFkFsOxrYx7wG124BG1/WIwc1ng8errtJpWAn4dL5RnNgGvnD4sIISL9xxxB+hbuYQGLQ102BQIGktg==",
   "success": true,
   "projectFilePath": "/Users/blehjo/projects/planetninesolution/planetnineserver/planetnineserver.csproj",
   "expectedPackageFiles": [
@@ -9,7 +9,6 @@
     "/Users/blehjo/.nuget/packages/azure.core/1.24.0/azure.core.1.24.0.nupkg.sha512",
     "/Users/blehjo/.nuget/packages/azure.identity/1.6.0/azure.identity.1.6.0.nupkg.sha512",
     "/Users/blehjo/.nuget/packages/bcrypt.net-core/1.6.0/bcrypt.net-core.1.6.0.nupkg.sha512",
-    "/Users/blehjo/.nuget/packages/bcrypt.net-next/4.0.3/bcrypt.net-next.4.0.3.nupkg.sha512",
     "/Users/blehjo/.nuget/packages/betalgo.openai.gpt3/6.8.3/betalgo.openai.gpt3.6.8.3.nupkg.sha512",
     "/Users/blehjo/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/blehjo/.nuget/packages/microsoft.aspnetcore.jsonpatch/7.0.4/microsoft.aspnetcore.jsonpatch.7.0.4.nupkg.sha512",
