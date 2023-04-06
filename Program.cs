@@ -38,7 +38,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(MyAllowSpecificOrigins,
                       policy =>
                       {
-                          policy.WithOrigins("https://kalanchoeai.azurewebsites.net", "https://localhost:44498")
+                          policy.WithOrigins("https://kalanchoeai.azurewebsites.net", "https://localhost:44489")
                           .AllowAnyHeader()
                           .AllowAnyMethod()
                           .AllowCredentials();
@@ -61,10 +61,10 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 // Add services to the container.
 
-builder.Services.AddControllers();
+//builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+//builder.Services.AddEndpointsApiExplorer();
+//builder.Services.AddSwaggerGen();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

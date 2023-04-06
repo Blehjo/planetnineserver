@@ -55,7 +55,7 @@ namespace planetnineserver.Controllers
                 // SameSite = SameSiteMode.Unspecified
             };
 
-            cookieOptions.Expires = DateTime.Now.AddDays(1);
+            cookieOptions.Expires = DateTime.Now.AddDays(7);
 
             cookieOptions.Path = "/";
 

@@ -11,6 +11,8 @@ namespace planetnineserver.Models
 
         public string Title { get; set; }
 
+        public string Type { get; set; } = "chat";
+
         [DataType(DataType.Date)]
         public DateTime DateCreated { get; set; } = DateTime.UtcNow;
 
@@ -18,5 +20,9 @@ namespace planetnineserver.Models
         public User? User { get; set; }
 
 		public ICollection<ChatComment>? ChatComments { get; set; }
+
+        public ICollection<Comment>? Comments { get; set; }
+
+        public ICollection<Favorite>? Favorites { get; set; }
     }
 }
