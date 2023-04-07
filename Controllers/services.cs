@@ -72,7 +72,7 @@ namespace planetnineserver.Controllers
         {
             if (model.ImageFile != null)
             {
-                model.ProfileImage = await SaveImage(model.ImageFile);
+                model.ImageLink = await SaveImage(model.ImageFile);
             }
 
             _userService.Register(model);

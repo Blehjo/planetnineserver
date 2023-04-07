@@ -28,7 +28,7 @@ namespace planetnineserver.Models.Users
         [Required]
         public string About { get; set; }
 
-        public string? ProfileImage { get; set; }
+        public string? ImageLink { get; set; }
 
         [NotMapped]
         public IFormFile? ImageFile { get; set; }
