@@ -37,5 +37,9 @@ namespace planetnineserver.Data
         public DbSet<planetnineserver.Models.ChatComment> ChatComments { get; set; } = default!;
 
         public DbSet<planetnineserver.Models.ArtificialIntelligence> ArtificialIntelligences { get; set; } = default!;
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+        }
     }
 }
