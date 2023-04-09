@@ -28,6 +28,8 @@ namespace planetnineserver.Models
         [NotMapped]
         public string? ImageSource { get; set; }
 
+        public ICollection<User>? Users { get; set; }
+
         public ICollection<Moon>? Moons { get; set; }
 
 		public ICollection<Favorite>? Favorites { get; set; }

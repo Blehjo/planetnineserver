@@ -32,6 +32,8 @@ namespace planetnineserver.Models
 
         public Planet? Planet { get; set; }
 
+        public ICollection<User>? Users { get; set; }
+
         public ICollection<Favorite>? Favorites { get; set; }
     }
 }
