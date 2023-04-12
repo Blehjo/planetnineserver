@@ -32,6 +32,20 @@ namespace planetnineserver.Controllers
             return await _context.Favorite.ToListAsync();
         }
 
+        // GET: api/favorite
+        [HttpGet("user")]
+        public async Task<ActionResult<IEnumerable<Favorite>>> GetUserFavorites()
+        {
+            if (_context.Favorite == null)
+            {
+                return NotFound();
+            }
+
+            var userId = Int32.Parse(HttpContext.Request.Cookies["user"]);
+
+            return await _context.Favorite.Where(f => f.UserId == userId).ToListAsync();
+        }
+
         // GET: api/favorite/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Favorite>> GetFavorite(int id)
