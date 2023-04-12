@@ -32,7 +32,7 @@ namespace planetnineserver.Controllers
             return await _context.Favorite.ToListAsync();
         }
 
-        // GET: api/favorite
+        // GET: api/favorite/user
         [HttpGet("user")]
         public async Task<ActionResult<IEnumerable<Favorite>>> GetUserFavorites()
         {
@@ -44,6 +44,19 @@ namespace planetnineserver.Controllers
             var userId = Int32.Parse(HttpContext.Request.Cookies["user"]);
 
             return await _context.Favorite.Where(f => f.UserId == userId).ToListAsync();
+        }
+
+
+        // GET: api/favorite/user/id
+        [HttpGet("user/{id}")]
+        public async Task<ActionResult<IEnumerable<Favorite>>> GetSingleUserFavorites(int id)
+        {
+            if (_context.Favorite == null)
+            {
+                return NotFound();
+            }
+
+            return await _context.Favorite.Where(f => f.UserId == id).ToListAsync();
         }
 
         // GET: api/favorite/5
