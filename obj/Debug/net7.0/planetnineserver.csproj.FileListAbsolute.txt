@@ -613,3 +613,4 @@
 /Users/blehjo/projects/planetninesolution/planetnineserver/bin/Debug/net7.0/Microsoft.AspNetCore.JsonPatch.dll
 /Users/blehjo/projects/planetninesolution/planetnineserver/bin/Debug/net7.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 /Users/blehjo/projects/planetninesolution/planetnineserver/bin/Debug/net7.0/Newtonsoft.Json.Bson.dll
+/Users/blehjo/projects/planetninesolution/planetnineserver/bin/Debug/net7.0/planetnineserver.staticwebassets.runtime.json

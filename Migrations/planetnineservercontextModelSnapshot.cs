@@ -29,7 +29,7 @@ namespace planetnineserver.Migrations
 
                     b.HasIndex("UsersUserId");
 
-                    b.ToTable("MoonUser");
+                    b.ToTable("MoonUser", (string)null);
                 });
 
             modelBuilder.Entity("PlanetUser", b =>
@@ -44,7 +44,7 @@ namespace planetnineserver.Migrations
 
                     b.HasIndex("UsersUserId");
 
-                    b.ToTable("PlanetUser");
+                    b.ToTable("PlanetUser", (string)null);
                 });
 
             modelBuilder.Entity("planetnineserver.Models.ArtificialIntelligence", b =>
@@ -72,7 +72,7 @@ namespace planetnineserver.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ArtificialIntelligences");
+                    b.ToTable("ArtificialIntelligences", (string)null);
                 });
 
             modelBuilder.Entity("planetnineserver.Models.Chat", b =>
@@ -104,7 +104,7 @@ namespace planetnineserver.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Chats");
+                    b.ToTable("Chats", (string)null);
                 });
 
             modelBuilder.Entity("planetnineserver.Models.ChatComment", b =>
@@ -137,7 +137,7 @@ namespace planetnineserver.Migrations
 
                     b.HasIndex("ChatId");
 
-                    b.ToTable("ChatComments");
+                    b.ToTable("ChatComments", (string)null);
                 });
 
             modelBuilder.Entity("planetnineserver.Models.Comment", b =>
@@ -177,7 +177,7 @@ namespace planetnineserver.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Comment");
+                    b.ToTable("Comment", (string)null);
                 });
 
             modelBuilder.Entity("planetnineserver.Models.Favorite", b =>
@@ -233,7 +233,7 @@ namespace planetnineserver.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Favorite");
+                    b.ToTable("Favorite", (string)null);
                 });
 
             modelBuilder.Entity("planetnineserver.Models.Follower", b =>
@@ -255,7 +255,7 @@ namespace planetnineserver.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Follower");
+                    b.ToTable("Follower", (string)null);
                 });
 
             modelBuilder.Entity("planetnineserver.Models.Message", b =>
@@ -277,7 +277,7 @@ namespace planetnineserver.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Message");
+                    b.ToTable("Message", (string)null);
                 });
 
             modelBuilder.Entity("planetnineserver.Models.MessageComment", b =>
@@ -312,7 +312,7 @@ namespace planetnineserver.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("MessageComment");
+                    b.ToTable("MessageComment", (string)null);
                 });
 
             modelBuilder.Entity("planetnineserver.Models.Moon", b =>
@@ -355,7 +355,7 @@ namespace planetnineserver.Migrations
 
                     b.HasIndex("PlanetId");
 
-                    b.ToTable("Moon");
+                    b.ToTable("Moon", (string)null);
                 });
 
             modelBuilder.Entity("planetnineserver.Models.Planet", b =>
@@ -393,7 +393,7 @@ namespace planetnineserver.Migrations
 
                     b.HasKey("PlanetId");
 
-                    b.ToTable("Planet");
+                    b.ToTable("Planet", (string)null);
                 });
 
             modelBuilder.Entity("planetnineserver.Models.Post", b =>
@@ -422,7 +422,7 @@ namespace planetnineserver.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Post");
+                    b.ToTable("Post", (string)null);
                 });
 
             modelBuilder.Entity("planetnineserver.Models.User", b =>
@@ -460,7 +460,7 @@ namespace planetnineserver.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("User");
+                    b.ToTable("User", (string)null);
                 });
 
             modelBuilder.Entity("MoonUser", b =>

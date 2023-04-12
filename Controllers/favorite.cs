@@ -90,6 +90,9 @@ namespace planetnineserver.Controllers
           {
               return Problem("Entity set 'planetnineservercontext.Favorite'  is null.");
           }
+
+            favorite.UserId = Int32.Parse(HttpContext.Request.Cookies["user"]);
+
             _context.Favorite.Add(favorite);
             await _context.SaveChangesAsync();
 
