@@ -6,6 +6,8 @@ using planetnineserver.Helpers;
 using planetnineserver.Models.Users;
 using planetnineserver.Services;
 using planetnineserver.Models;
+using planetnineserver.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace planetnineserver.Controllers
 {
@@ -18,14 +20,17 @@ namespace planetnineserver.Controllers
         private IMapper _mapper;
         private readonly AppSettings _appSettings;
         private readonly IWebHostEnvironment _hostEnvironment;
+        private readonly planetnineservercontext _context;
 
         public UsersController(
+            planetnineservercontext context,
             IUserService userService,
             IMapper mapper,
             IOptions<AppSettings> appSettings,
             IWebHostEnvironment hostEnvironment
             )
         {
+            _context = context;
             _userService = userService;
             _mapper = mapper;
             _appSettings = appSettings.Value;
@@ -126,17 +131,63 @@ namespace planetnineserver.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            var users = _userService.GetAll();
-            return Ok(users);
+            if (_context.User == null)
+            {
+                return NotFound();
+            }
+
+            return await _context.User.Select(x => new User()
+            {
+                UserId = x.UserId,
+                Username = x.Username,
+                FirstName = x.FirstName,
+                About = x.About,
+                ImageLink = x.ImageLink,
+                ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
+            }).ToListAsync();
+        }
+
+        // GET: api/User/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<User>> GetUser(int id)
+        {
+            if (_context.User == null)
+            {
+                return NotFound();
+            }
+            var user = await _context.User.FindAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            user.ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, user.ImageLink);
+
+            return user;
         }
 
         [HttpGet("data")]
-        public IActionResult GetById()
+        public async Task<ActionResult<User>> GetUserInformation()
         {
-            var user = HttpContext.Items["User"];
-            return Ok(user);
+            if (_context.User == null)
+            {
+                return NotFound();
+            }
+
+            var userId = Int32.Parse(HttpContext.Request.Cookies["user"]);
+            var user = await _context.User.FindAsync(userId);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            user.ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, user.ImageLink);
+
+            return user;
         }
 
         [HttpPut("{id}")]
