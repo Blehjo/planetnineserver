@@ -38,6 +38,8 @@ namespace planetnineserver.Models
 
         public ICollection<Planet>? Planets { get; set; }
 
+        public ICollection<Post>? Posts { get; set; }
+
         public ICollection<Moon>? Moons { get; set; }
 
         public ICollection<Follower>? Followers { get; set; }
