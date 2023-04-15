@@ -14,9 +14,9 @@ namespace planetnineserver.Data
         {
         }
 
-        public DbSet<User> User { get; set; } = default!;
+        public DbSet<planetnineserver.Models.User> User { get; set; } = default!;
 
-        public DbSet<Comment> Comment { get; set; } = default!;
+        public DbSet<planetnineserver.Models.Comment> Comment { get; set; } = default!;
 
         public DbSet<planetnineserver.Models.Favorite> Favorite { get; set; } = default!;
 
