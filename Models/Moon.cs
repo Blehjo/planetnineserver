@@ -8,15 +8,15 @@ namespace planetnineserver.Models
         
         public string MoonName { get; set; }
 
-        public float MoonMass { get; set; }
+        public string MoonMass { get; set; }
 
-        public float Perihelion { get; set; }
+        public string Perihelion { get; set; }
 
-        public float Aphelion { get; set; }
+        public string Aphelion { get; set; }
 
-        public float Gravity { get; set; }
+        public string Gravity { get; set; }
 
-        public int Temperature { get; set; }
+        public string Temperature { get; set; }
 
         public string Type { get; set; } = "moon";
 
@@ -32,7 +32,9 @@ namespace planetnineserver.Models
 
         public Planet? Planet { get; set; }
 
-        public ICollection<User>? Users { get; set; }
+        public int UserId { get; set; }
+
+        public User? User { get; set; }
 
         public ICollection<Favorite>? Favorites { get; set; }
     }

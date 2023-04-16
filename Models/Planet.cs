@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace planetnineserver.Models
 {
@@ -6,21 +8,25 @@ namespace planetnineserver.Models
 	{
 		public int PlanetId { get; set; }
 
-		public string PlanetName { get; set; }
+		public string? PlanetName { get; set; }
 
-		public float PlanetMass { get; set; }
+		public string? PlanetMass { get; set; }
 
-		public float Perihelion { get; set; }
+		public string? Perihelion { get; set; }
 
-		public float Aphelion { get; set; }
+		public string? Aphelion { get; set; }
 
-		public float Gravity { get; set; }
+		public string? Gravity { get; set; }
 
-		public int Temperature { get; set; }
+		public string? Temperature { get; set; }
 
-        public string Type { get; set; } = "planet";
+		public string Type { get; set; } = "planet";
 
-        public string ImageLink { get; set; }
+		public string? ImageLink { get; set; }
+
+		public int UserId { get; set; }
+
+		public User? User { get; set; }
 
         [NotMapped]
         public IFormFile? ImageFile { get; set; }
@@ -28,11 +34,9 @@ namespace planetnineserver.Models
         [NotMapped]
         public string? ImageSource { get; set; }
 
-        public ICollection<User>? Users { get; set; }
-
         public ICollection<Moon>? Moons { get; set; }
 
 		public ICollection<Favorite>? Favorites { get; set; }
-	}
+    }
 }
 

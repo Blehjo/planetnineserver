@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using planetnineserver.Data;
 using planetnineserver.Models;
 
@@ -15,10 +16,12 @@ namespace planetnineserver.Controllers
     public class planet : ControllerBase
     {
         private readonly planetnineservercontext _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public planet(planetnineservercontext context)
+        public planet(planetnineservercontext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            this._hostEnvironment = hostEnvironment;
         }
 
         // GET: api/planet
@@ -29,7 +32,19 @@ namespace planetnineserver.Controllers
           {
               return NotFound();
           }
-            return await _context.Planet.ToListAsync();
+
+            return await _context.Planet.Select(x => new Planet()
+            {
+                PlanetId = x.PlanetId,
+                PlanetName = x.PlanetName,
+                PlanetMass = x.PlanetMass,
+                Perihelion = x.Perihelion,
+                Aphelion = x.Aphelion,
+                Gravity = x.Gravity,
+                UserId = x.UserId,
+                Temperature = x.Temperature,
+                ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
+            }).ToListAsync();
         }
 
         // GET: api/planet/5
@@ -46,6 +61,8 @@ namespace planetnineserver.Controllers
             {
                 return NotFound();
             }
+
+            planet.ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, planet.ImageLink);
 
             return planet;
         }
@@ -84,12 +101,15 @@ namespace planetnineserver.Controllers
         // POST: api/planet
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Planet>> PostPlanet(Planet planet)
+        public async Task<ActionResult<Planet>> PostPlanet([FromForm] Planet planet)
         {
           if (_context.Planet == null)
           {
               return Problem("Entity set 'planetnineservercontext.Planet'  is null.");
           }
+
+            planet.UserId = Int32.Parse(HttpContext.Request.Cookies["user"]);
+
             _context.Planet.Add(planet);
             await _context.SaveChangesAsync();
 
@@ -119,6 +139,27 @@ namespace planetnineserver.Controllers
         private bool PlanetExists(int id)
         {
             return (_context.Planet?.Any(e => e.PlanetId == id)).GetValueOrDefault();
+        }
+
+        [NonAction]
+        public async Task<string> SaveImage(IFormFile imageFile)
+        {
+            string imageName = new String(Path.GetFileNameWithoutExtension(imageFile.FileName).Take(10).ToArray()).Replace(' ', '-');
+            imageName = imageName + DateTime.Now.ToString("yymmssfff") + Path.GetExtension(imageFile.FileName);
+            var imagePath = Path.Combine(_hostEnvironment.ContentRootPath, "Images", imageName);
+            using (var fileStream = new FileStream(imagePath, FileMode.Create))
+            {
+                await imageFile.CopyToAsync(fileStream);
+            }
+            return imageName;
+        }
+
+        [NonAction]
+        public void DeleteImage(string imageName)
+        {
+            var imagePath = Path.Combine(_hostEnvironment.ContentRootPath, "Images", imageName);
+            if (System.IO.File.Exists(imagePath))
+                System.IO.File.Delete(imagePath);
         }
     }
 }

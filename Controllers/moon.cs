@@ -53,7 +53,7 @@ namespace planetnineserver.Controllers
         // PUT: api/moon/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutMoon(int id, Moon moon)
+        public async Task<IActionResult> PutMoon([FromForm] int id, Moon moon)
         {
             if (id != moon.MoonId)
             {
@@ -84,7 +84,7 @@ namespace planetnineserver.Controllers
         // POST: api/moon
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Moon>> PostMoon(Moon moon)
+        public async Task<ActionResult<Moon>> PostMoon([FromForm] Moon moon)
         {
           if (_context.Moon == null)
           {

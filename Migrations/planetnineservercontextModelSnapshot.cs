@@ -17,36 +17,6 @@ namespace planetnineserver.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.4");
 
-            modelBuilder.Entity("MoonUser", b =>
-                {
-                    b.Property<int>("MoonsMoonId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("UsersUserId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("MoonsMoonId", "UsersUserId");
-
-                    b.HasIndex("UsersUserId");
-
-                    b.ToTable("MoonUser");
-                });
-
-            modelBuilder.Entity("PlanetUser", b =>
-                {
-                    b.Property<int>("PlanetsPlanetId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("UsersUserId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("PlanetsPlanetId", "UsersUserId");
-
-                    b.HasIndex("UsersUserId");
-
-                    b.ToTable("PlanetUser");
-                });
-
             modelBuilder.Entity("planetnineserver.Models.ArtificialIntelligence", b =>
                 {
                     b.Property<int>("ArtificialIntelligenceId")
@@ -321,39 +291,49 @@ namespace planetnineserver.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<float>("Aphelion")
-                        .HasColumnType("REAL");
+                    b.Property<string>("Aphelion")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-                    b.Property<float>("Gravity")
-                        .HasColumnType("REAL");
+                    b.Property<string>("Gravity")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ImageLink")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<float>("MoonMass")
-                        .HasColumnType("REAL");
+                    b.Property<string>("MoonMass")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("MoonName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<float>("Perihelion")
-                        .HasColumnType("REAL");
+                    b.Property<string>("Perihelion")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("PlanetId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Temperature")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Temperature")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("MoonId");
 
                     b.HasIndex("PlanetId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Moon");
                 });
@@ -364,34 +344,37 @@ namespace planetnineserver.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<float>("Aphelion")
-                        .HasColumnType("REAL");
+                    b.Property<string>("Aphelion")
+                        .HasColumnType("TEXT");
 
-                    b.Property<float>("Gravity")
-                        .HasColumnType("REAL");
+                    b.Property<string>("Gravity")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ImageLink")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<float>("Perihelion")
-                        .HasColumnType("REAL");
+                    b.Property<string>("Perihelion")
+                        .HasColumnType("TEXT");
 
-                    b.Property<float>("PlanetMass")
-                        .HasColumnType("REAL");
+                    b.Property<string>("PlanetMass")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PlanetName")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Temperature")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Temperature")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("PlanetId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Planet");
                 });
@@ -461,36 +444,6 @@ namespace planetnineserver.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("User");
-                });
-
-            modelBuilder.Entity("MoonUser", b =>
-                {
-                    b.HasOne("planetnineserver.Models.Moon", null)
-                        .WithMany()
-                        .HasForeignKey("MoonsMoonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("planetnineserver.Models.User", null)
-                        .WithMany()
-                        .HasForeignKey("UsersUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("PlanetUser", b =>
-                {
-                    b.HasOne("planetnineserver.Models.Planet", null)
-                        .WithMany()
-                        .HasForeignKey("PlanetsPlanetId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("planetnineserver.Models.User", null)
-                        .WithMany()
-                        .HasForeignKey("UsersUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("planetnineserver.Models.ArtificialIntelligence", b =>
@@ -641,7 +594,26 @@ namespace planetnineserver.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("planetnineserver.Models.User", "User")
+                        .WithMany("Moons")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Planet");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("planetnineserver.Models.Planet", b =>
+                {
+                    b.HasOne("planetnineserver.Models.User", "User")
+                        .WithMany("Planets")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("planetnineserver.Models.Post", b =>
@@ -710,6 +682,10 @@ namespace planetnineserver.Migrations
                     b.Navigation("Favorites");
 
                     b.Navigation("Followers");
+
+                    b.Navigation("Moons");
+
+                    b.Navigation("Planets");
 
                     b.Navigation("Posts");
                 });

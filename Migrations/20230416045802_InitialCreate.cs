@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace planetnineserver.Migrations
 {
     /// <inheritdoc />
-    public partial class ModelsUpdate : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -33,20 +33,22 @@ namespace planetnineserver.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Chats",
+                name: "ArtificialIntelligences",
                 columns: table => new
                 {
-                    ChatId = table.Column<int>(type: "INTEGER", nullable: false)
+                    ArtificialIntelligenceId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Title = table.Column<string>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    Role = table.Column<string>(type: "TEXT", nullable: true),
+                    ImageLink = table.Column<string>(type: "TEXT", nullable: true),
                     DateCreated = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UserId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Chats", x => x.ChatId);
+                    table.PrimaryKey("PK_ArtificialIntelligences", x => x.ArtificialIntelligenceId);
                     table.ForeignKey(
-                        name: "FK_Chats_User_UserId",
+                        name: "FK_ArtificialIntelligences_User_UserId",
                         column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "UserId",
@@ -101,15 +103,15 @@ namespace planetnineserver.Migrations
                 {
                     PlanetId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    PlanetName = table.Column<string>(type: "TEXT", nullable: false),
-                    PlanetMass = table.Column<float>(type: "REAL", nullable: false),
-                    Perihelion = table.Column<float>(type: "REAL", nullable: false),
-                    Aphelion = table.Column<float>(type: "REAL", nullable: false),
-                    Gravity = table.Column<float>(type: "REAL", nullable: false),
-                    Temperature = table.Column<int>(type: "INTEGER", nullable: false),
+                    PlanetName = table.Column<string>(type: "TEXT", nullable: true),
+                    PlanetMass = table.Column<string>(type: "TEXT", nullable: true),
+                    Perihelion = table.Column<string>(type: "TEXT", nullable: true),
+                    Aphelion = table.Column<string>(type: "TEXT", nullable: true),
+                    Gravity = table.Column<string>(type: "TEXT", nullable: true),
+                    Temperature = table.Column<string>(type: "TEXT", nullable: true),
                     Type = table.Column<string>(type: "TEXT", nullable: false),
-                    ImageLink = table.Column<string>(type: "TEXT", nullable: false),
-                    UserId = table.Column<int>(type: "INTEGER", nullable: true)
+                    ImageLink = table.Column<string>(type: "TEXT", nullable: true),
+                    UserId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -118,7 +120,8 @@ namespace planetnineserver.Migrations
                         name: "FK_Planet_User_UserId",
                         column: x => x.UserId,
                         principalTable: "User",
-                        principalColumn: "UserId");
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -145,23 +148,30 @@ namespace planetnineserver.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ChatComments",
+                name: "Chats",
                 columns: table => new
                 {
-                    ChatCommentId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    ChatValue = table.Column<string>(type: "TEXT", nullable: false),
-                    DateCreated = table.Column<DateTime>(type: "TEXT", nullable: false),
                     ChatId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Title = table.Column<string>(type: "TEXT", nullable: false),
+                    Type = table.Column<string>(type: "TEXT", nullable: false),
+                    DateCreated = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    UserId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ArtificialIntelligenceId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ChatComments", x => x.ChatCommentId);
+                    table.PrimaryKey("PK_Chats", x => x.ChatId);
                     table.ForeignKey(
-                        name: "FK_ChatComments_Chats_ChatId",
-                        column: x => x.ChatId,
-                        principalTable: "Chats",
-                        principalColumn: "ChatId",
+                        name: "FK_Chats_ArtificialIntelligences_ArtificialIntelligenceId",
+                        column: x => x.ArtificialIntelligenceId,
+                        principalTable: "ArtificialIntelligences",
+                        principalColumn: "ArtificialIntelligenceId");
+                    table.ForeignKey(
+                        name: "FK_Chats_User_UserId",
+                        column: x => x.UserId,
+                        principalTable: "User",
+                        principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -201,14 +211,16 @@ namespace planetnineserver.Migrations
                 {
                     MoonId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    MoonMass = table.Column<float>(type: "REAL", nullable: false),
-                    Perihelion = table.Column<float>(type: "REAL", nullable: false),
-                    Aphelion = table.Column<float>(type: "REAL", nullable: false),
-                    Gravity = table.Column<float>(type: "REAL", nullable: false),
-                    Temperature = table.Column<int>(type: "INTEGER", nullable: false),
+                    MoonName = table.Column<string>(type: "TEXT", nullable: false),
+                    MoonMass = table.Column<string>(type: "TEXT", nullable: false),
+                    Perihelion = table.Column<string>(type: "TEXT", nullable: false),
+                    Aphelion = table.Column<string>(type: "TEXT", nullable: false),
+                    Gravity = table.Column<string>(type: "TEXT", nullable: false),
+                    Temperature = table.Column<string>(type: "TEXT", nullable: false),
                     Type = table.Column<string>(type: "TEXT", nullable: false),
                     ImageLink = table.Column<string>(type: "TEXT", nullable: false),
-                    PlanetId = table.Column<int>(type: "INTEGER", nullable: false)
+                    PlanetId = table.Column<int>(type: "INTEGER", nullable: false),
+                    UserId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -218,6 +230,41 @@ namespace planetnineserver.Migrations
                         column: x => x.PlanetId,
                         principalTable: "Planet",
                         principalColumn: "PlanetId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Moon_User_UserId",
+                        column: x => x.UserId,
+                        principalTable: "User",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ChatComments",
+                columns: table => new
+                {
+                    ChatCommentId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ChatValue = table.Column<string>(type: "TEXT", nullable: true),
+                    MediaLink = table.Column<string>(type: "TEXT", nullable: true),
+                    Type = table.Column<string>(type: "TEXT", nullable: true),
+                    DateCreated = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    ChatId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ArtificialIntelligenceId = table.Column<int>(type: "INTEGER", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ChatComments", x => x.ChatCommentId);
+                    table.ForeignKey(
+                        name: "FK_ChatComments_ArtificialIntelligences_ArtificialIntelligenceId",
+                        column: x => x.ArtificialIntelligenceId,
+                        principalTable: "ArtificialIntelligences",
+                        principalColumn: "ArtificialIntelligenceId");
+                    table.ForeignKey(
+                        name: "FK_ChatComments_Chats_ChatId",
+                        column: x => x.ChatId,
+                        principalTable: "Chats",
+                        principalColumn: "ChatId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -232,11 +279,17 @@ namespace planetnineserver.Migrations
                     Type = table.Column<string>(type: "TEXT", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UserId = table.Column<int>(type: "INTEGER", nullable: false),
-                    PostId = table.Column<int>(type: "INTEGER", nullable: false)
+                    PostId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ChatId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Comment", x => x.CommentId);
+                    table.ForeignKey(
+                        name: "FK_Comment_Chats_ChatId",
+                        column: x => x.ChatId,
+                        principalTable: "Chats",
+                        principalColumn: "ChatId");
                     table.ForeignKey(
                         name: "FK_Comment_Post_PostId",
                         column: x => x.PostId,
@@ -258,18 +311,24 @@ namespace planetnineserver.Migrations
                     FavoriteId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     ContentId = table.Column<int>(type: "INTEGER", nullable: false),
+                    UserId = table.Column<int>(type: "INTEGER", nullable: false),
                     ContentType = table.Column<string>(type: "TEXT", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    ChatId = table.Column<int>(type: "INTEGER", nullable: true),
                     CommentId = table.Column<int>(type: "INTEGER", nullable: true),
                     MessageCommentId = table.Column<int>(type: "INTEGER", nullable: true),
                     MoonId = table.Column<int>(type: "INTEGER", nullable: true),
                     PlanetId = table.Column<int>(type: "INTEGER", nullable: true),
-                    PostId = table.Column<int>(type: "INTEGER", nullable: true),
-                    UserId = table.Column<int>(type: "INTEGER", nullable: true)
+                    PostId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Favorite", x => x.FavoriteId);
+                    table.ForeignKey(
+                        name: "FK_Favorite_Chats_ChatId",
+                        column: x => x.ChatId,
+                        principalTable: "Chats",
+                        principalColumn: "ChatId");
                     table.ForeignKey(
                         name: "FK_Favorite_Comment_CommentId",
                         column: x => x.CommentId,
@@ -299,8 +358,19 @@ namespace planetnineserver.Migrations
                         name: "FK_Favorite_User_UserId",
                         column: x => x.UserId,
                         principalTable: "User",
-                        principalColumn: "UserId");
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ArtificialIntelligences_UserId",
+                table: "ArtificialIntelligences",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ChatComments_ArtificialIntelligenceId",
+                table: "ChatComments",
+                column: "ArtificialIntelligenceId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ChatComments_ChatId",
@@ -308,9 +378,19 @@ namespace planetnineserver.Migrations
                 column: "ChatId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Chats_ArtificialIntelligenceId",
+                table: "Chats",
+                column: "ArtificialIntelligenceId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Chats_UserId",
                 table: "Chats",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comment_ChatId",
+                table: "Comment",
+                column: "ChatId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comment_PostId",
@@ -321,6 +401,11 @@ namespace planetnineserver.Migrations
                 name: "IX_Comment_UserId",
                 table: "Comment",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Favorite_ChatId",
+                table: "Favorite",
+                column: "ChatId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Favorite_CommentId",
@@ -378,6 +463,11 @@ namespace planetnineserver.Migrations
                 column: "PlanetId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Moon_UserId",
+                table: "Moon",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Planet_UserId",
                 table: "Planet",
                 column: "UserId");
@@ -401,9 +491,6 @@ namespace planetnineserver.Migrations
                 name: "Follower");
 
             migrationBuilder.DropTable(
-                name: "Chats");
-
-            migrationBuilder.DropTable(
                 name: "Comment");
 
             migrationBuilder.DropTable(
@@ -413,6 +500,9 @@ namespace planetnineserver.Migrations
                 name: "Moon");
 
             migrationBuilder.DropTable(
+                name: "Chats");
+
+            migrationBuilder.DropTable(
                 name: "Post");
 
             migrationBuilder.DropTable(
@@ -420,6 +510,9 @@ namespace planetnineserver.Migrations
 
             migrationBuilder.DropTable(
                 name: "Planet");
+
+            migrationBuilder.DropTable(
+                name: "ArtificialIntelligences");
 
             migrationBuilder.DropTable(
                 name: "User");

@@ -57,6 +57,27 @@ namespace planetnineserver.Controllers
             return post;
         }
 
+        [HttpGet("user")]
+        public async Task<ActionResult<IEnumerable<Post>>> GetUserPosts(int id)
+        {
+            if (_context.Post == null)
+            {
+                return NotFound();
+            }
+
+            var userId = Int32.Parse(HttpContext.Request.Cookies["user"]);
+
+            return await _context.Post.Where(p => p.UserId == id).Select(x => new Post()
+            {
+                PostId = x.PostId,
+                PostValue = x.PostValue,
+                MediaLink = x.MediaLink,
+                UserId = x.UserId,
+                DateCreated = x.DateCreated,
+                ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.MediaLink)
+            }).ToListAsync();
+        }
+
         [HttpGet("user/{id}")]
         public async Task<ActionResult<IEnumerable<Post>>> GetSingleUserPosts(int id)
         {
