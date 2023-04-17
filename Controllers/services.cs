@@ -82,6 +82,8 @@ namespace planetnineserver.Controllers
 
             _userService.Register(model);
 
+            await _context.SaveChangesAsync();
+
             AuthenticateRequest authenticateModel = new AuthenticateRequest();
 
             authenticateModel.Username = model.Username;
