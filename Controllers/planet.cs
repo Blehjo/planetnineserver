@@ -67,6 +67,31 @@ namespace planetnineserver.Controllers
             return planet;
         }
 
+        // GET: api/ArtificialIntelligence/user
+        [HttpGet("user")]
+        public async Task<ActionResult<IEnumerable<Planet>>> GetUserArtificialIntelligences()
+        {
+            if (_context.ArtificialIntelligences == null)
+            {
+                return NotFound();
+            }
+
+            var userId = Int32.Parse(HttpContext.Request.Cookies["user"]);
+
+            return await _context.Planet.Where(p => p.UserId == userId).Select(x => new Planet()
+            {
+                PlanetId = x.PlanetId,
+                PlanetName = x.PlanetName,
+                PlanetMass = x.PlanetMass,
+                Perihelion = x.Perihelion,
+                Aphelion = x.Aphelion,
+                Gravity = x.Gravity,
+                UserId = x.UserId,
+                Temperature = x.Temperature,
+                ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
+            }).ToListAsync();
+        }
+
         // PUT: api/planet/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -107,6 +132,11 @@ namespace planetnineserver.Controllers
           {
               return Problem("Entity set 'planetnineservercontext.Planet'  is null.");
           }
+
+            if (planet.ImageFile != null)
+            {
+                planet.ImageLink = await SaveImage(planet.ImageFile);
+            }
 
             planet.UserId = Int32.Parse(HttpContext.Request.Cookies["user"]);
 

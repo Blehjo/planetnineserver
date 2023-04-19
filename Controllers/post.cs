@@ -58,7 +58,7 @@ namespace planetnineserver.Controllers
         }
 
         [HttpGet("user")]
-        public async Task<ActionResult<IEnumerable<Post>>> GetUserPosts(int id)
+        public async Task<ActionResult<IEnumerable<Post>>> GetUserPosts()
         {
             if (_context.Post == null)
             {
@@ -67,7 +67,7 @@ namespace planetnineserver.Controllers
 
             var userId = Int32.Parse(HttpContext.Request.Cookies["user"]);
 
-            return await _context.Post.Where(p => p.UserId == id).Select(x => new Post()
+            return await _context.Post.Where(p => p.UserId == userId).Select(x => new Post()
             {
                 PostId = x.PostId,
                 PostValue = x.PostValue,

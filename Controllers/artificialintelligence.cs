@@ -57,6 +57,52 @@ namespace planetnineserver.Controllers
             return artificialIntelligence;
         }
 
+        // GET: api/ArtificialIntelligence/user
+        [HttpGet("user")]
+        public async Task<ActionResult<IEnumerable<ArtificialIntelligence>>> GetUserArtificialIntelligences()
+        {
+            if (_context.ArtificialIntelligences == null)
+            {
+                return NotFound();
+            }
+
+            var userId = Int32.Parse(HttpContext.Request.Cookies["user"]);
+
+            return await _context.ArtificialIntelligences.Where(p => p.UserId == userId).Select(x => new ArtificialIntelligence()
+            {
+                ArtificialIntelligenceId = x.ArtificialIntelligenceId,
+                Name = x.Name,
+                Role = x.Role,
+                ImageLink = x.ImageLink,
+                ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
+            }).ToListAsync();
+        }
+
+        // GET: api/ArtificialIntelligence/5
+        [HttpGet("/user/{id}")]
+        public async Task<ActionResult<IEnumerable<ArtificialIntelligence>>> GetOtherUserArtificialIntelligence(int id)
+        {
+            if (_context.ArtificialIntelligences == null)
+            {
+                return NotFound();
+            }
+            var artificialIntelligence = await _context.ArtificialIntelligences.FindAsync(id);
+
+            if (artificialIntelligence == null)
+            {
+                return NotFound();
+            }
+
+            return await _context.ArtificialIntelligences.Where(p => p.UserId == id).Select(x => new ArtificialIntelligence()
+            {
+                ArtificialIntelligenceId = x.ArtificialIntelligenceId,
+                Name = x.Name,
+                Role = x.Role,
+                ImageLink = x.ImageLink,
+                ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
+            }).ToListAsync();
+        }
+
         // PUT: api/ArtificialIntelligence/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -102,6 +148,8 @@ namespace planetnineserver.Controllers
             {
                 artificialIntelligence.ImageLink = await SaveImage(artificialIntelligence.ImageFile);
             }
+
+            artificialIntelligence.UserId = Int32.Parse(HttpContext.Request.Cookies["user"]);
 
             _context.ArtificialIntelligences.Add(artificialIntelligence);
 

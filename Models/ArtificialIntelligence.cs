@@ -25,7 +25,7 @@ namespace planetnineserver.Models
 
         public int UserId { get; set; }
 
-        public User User { get; set; }
+        public User? User { get; set; }
 
         public ICollection<Chat>? Chats { get; set; }
 
