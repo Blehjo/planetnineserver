@@ -122,7 +122,7 @@ namespace planetnineserver.Controllers
         {
             if (_context.Comment == null)
             {
-                return Problem("Entity set 'KalanchoeAIDatabaseContext.Comments'  is null.");
+                return Problem("Entity set 'PlanetNineDatabaseContext.Comments'  is null.");
             }
 
             if (comment.ImageFile != null)

@@ -92,7 +92,7 @@ namespace planetnineserver.Controllers
         {
           if (_context.Message == null)
           {
-              return Problem("Entity set 'KalanchoeAIDatabaseContext.Messages'  is null.");
+              return Problem("Entity set 'PlanetNineDatabaseContext.Messages'  is null.");
           }
 
             var userId = Int32.Parse(Request.Cookies["user"]);

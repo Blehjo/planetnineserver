@@ -5,8 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace planetnineserver.Models
 {
-	public class Chat
-	{
+    public class Chat
+    {
         public int ChatId { get; set; }
 
         public string Title { get; set; }
@@ -18,6 +18,9 @@ namespace planetnineserver.Models
 
         public int UserId { get; set; }
         public User? User { get; set; }
+
+        public int ArtificialId { get; set; }
+        public ArtificialIntelligence? ArtificialIntelligence { get; set; }
 
 		public ICollection<ChatComment>? ChatComments { get; set; }
 

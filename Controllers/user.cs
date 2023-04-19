@@ -7,12 +7,12 @@ namespace planetnineserver.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class user : ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly planetnineservercontext _context;
         private readonly IWebHostEnvironment _hostEnvironment;
 
-        public user(planetnineservercontext context, IWebHostEnvironment hostEnvironment)
+        public UserController(planetnineservercontext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
             this._hostEnvironment = hostEnvironment;
@@ -96,7 +96,7 @@ namespace planetnineserver.Controllers
         {
             if (_context.User == null)
             {
-                return Problem("Entity set 'KalanchoeAIDatabaseContext.Users'  is null.");
+                return Problem("Entity set 'PlanetNineDatabaseContext.Users'  is null.");
             }
 
             if (user.ImageFile != null)

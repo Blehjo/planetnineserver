@@ -157,6 +157,7 @@ namespace planetnineserver.Migrations
                     Type = table.Column<string>(type: "TEXT", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UserId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ArtificialId = table.Column<int>(type: "INTEGER", nullable: false),
                     ArtificialIntelligenceId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>

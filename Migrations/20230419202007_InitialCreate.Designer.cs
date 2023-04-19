@@ -11,7 +11,7 @@ using planetnineserver.Data;
 namespace planetnineserver.Migrations
 {
     [DbContext(typeof(planetnineservercontext))]
-    [Migration("20230416045802_InitialCreate")]
+    [Migration("20230419202007_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -52,6 +52,9 @@ namespace planetnineserver.Migrations
                 {
                     b.Property<int>("ChatId")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ArtificialId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("ArtificialIntelligenceId")
@@ -462,7 +465,7 @@ namespace planetnineserver.Migrations
 
             modelBuilder.Entity("planetnineserver.Models.Chat", b =>
                 {
-                    b.HasOne("planetnineserver.Models.ArtificialIntelligence", null)
+                    b.HasOne("planetnineserver.Models.ArtificialIntelligence", "ArtificialIntelligence")
                         .WithMany("Chats")
                         .HasForeignKey("ArtificialIntelligenceId");
 
@@ -471,6 +474,8 @@ namespace planetnineserver.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("ArtificialIntelligence");
 
                     b.Navigation("User");
                 });

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using planetnineserver.Data;
 using planetnineserver.Models;
 
-namespace KalanchoeAI_Backend.Controllers
+namespace planetnineserver.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -111,7 +111,7 @@ namespace KalanchoeAI_Backend.Controllers
         {
             if (_context.ChatComments == null)
             {
-              return Problem("Entity set 'KalanchoeAIDatabaseContext.ChatComments'  is null.");
+              return Problem("Entity set 'PlanetNineDatabaseContext.ChatComments'  is null.");
             }
 
             if (chatComment.ImageFile != null)

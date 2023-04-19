@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using planetnineserver.Data;
 using planetnineserver.Models;
 
-namespace KalanchoeAI_Backend.Controllers
+namespace planetnineserver.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -123,7 +123,7 @@ namespace KalanchoeAI_Backend.Controllers
         {
           if (_context.Chats == null)
           {
-              return Problem("Entity set 'KalanchoeAIDatabaseContext.Chats'  is null.");
+              return Problem("Entity set 'PlanetNineDatabaseContext.Chats'  is null.");
           }
             chat.UserId = Int32.Parse(HttpContext.Request.Cookies["user"]);
             _context.Chats.Add(chat);

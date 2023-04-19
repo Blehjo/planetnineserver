@@ -2,7 +2,7 @@
 using planetnineserver.Models;
 using planetnineserver.Models.Users;
 
-namespace KalanchoeAI_Backend.Helpers
+namespace planetnineserver.Helpers
 {
     public class AutoMapperProfile : Profile
     {
