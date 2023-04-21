@@ -53,6 +53,55 @@ namespace planetnineserver.Controllers
             return moon;
         }
 
+        [HttpGet("user")]
+        public async Task<ActionResult<IEnumerable<Moon>>> GetUserMoon()
+        {
+            if (_context.Moon == null)
+            {
+                return NotFound();
+            }
+
+            var userId = Int32.Parse(HttpContext.Request.Cookies["user"]);
+
+            return await _context.Moon.Where(p => p.UserId == userId).Select(x => new Moon()
+            {
+                MoonId = x.MoonId,
+                MoonName = x.MoonName,
+                MoonMass = x.MoonMass,
+                Perihelion = x.Perihelion,
+                Aphelion = x.Aphelion,
+                Gravity = x.Gravity,
+                UserId = x.UserId,
+                ImageLink = x.ImageLink,
+                Temperature = x.Temperature,
+                ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
+            }).ToListAsync();
+        }
+
+        // GET: api/moon/5
+        [HttpGet("user/{id}")]
+        public async Task<ActionResult<IEnumerable<Moon>>> GetOtherUserMoon(int id)
+        {
+            if (_context.Moon == null)
+            {
+                return NotFound();
+            }
+
+            return await _context.Moon.Where(p => p.UserId == id).Select(x => new Moon()
+                {
+                    MoonId = x.MoonId,
+                    MoonName = x.MoonName,
+                    MoonMass = x.MoonMass,
+                    Perihelion = x.Perihelion,
+                    Aphelion = x.Aphelion,
+                    Gravity = x.Gravity,
+                    UserId = x.UserId,
+                    ImageLink = x.ImageLink,
+                    Temperature = x.Temperature,
+                    ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
+                }).ToListAsync();
+        }
+
         // PUT: api/moon/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
