@@ -42,6 +42,7 @@ namespace planetnineserver.Controllers
                 Aphelion = x.Aphelion,
                 Gravity = x.Gravity,
                 UserId = x.UserId,
+                ImageLink = x.ImageLink,
                 Temperature = x.Temperature,
                 ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
             }).ToListAsync();
@@ -87,6 +88,7 @@ namespace planetnineserver.Controllers
                 Aphelion = x.Aphelion,
                 Gravity = x.Gravity,
                 UserId = x.UserId,
+                ImageLink = x.ImageLink,
                 Temperature = x.Temperature,
                 ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
             }).ToListAsync();

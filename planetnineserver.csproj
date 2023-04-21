@@ -35,7 +35,6 @@
   <ItemGroup>
     <None Remove="Controllers\" />
     <None Remove="Models\" />
-    <None Remove="planetnineservercontext.data.db-wal" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />

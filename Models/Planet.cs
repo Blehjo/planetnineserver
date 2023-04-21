@@ -24,7 +24,7 @@ namespace planetnineserver.Models
 
 		public string? ImageLink { get; set; }
 
-		public int UserId { get; set; }
+		public int? UserId { get; set; }
 
 		public User? User { get; set; }
 
