@@ -38,6 +38,10 @@ namespace planetnineserver.Data
 
         public DbSet<planetnineserver.Models.ArtificialIntelligence> ArtificialIntelligences { get; set; } = default!;
 
+        public DbSet<planetnineserver.Models.MoonComment> MoonComment { get; set; } = default!;
+
+        public DbSet<planetnineserver.Models.PlanetComment> PlanetComment { get; set; } = default!;
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Planet>().HasData(

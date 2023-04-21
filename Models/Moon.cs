@@ -37,6 +37,8 @@ namespace planetnineserver.Models
         public User? User { get; set; }
 
         public ICollection<Favorite>? Favorites { get; set; }
+
+        public ICollection<MoonComment>? MoonComment { get; set; }
     }
 }
 
