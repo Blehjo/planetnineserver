@@ -66,7 +66,7 @@ namespace planetnineserver.Controllers
         }
 
         // GET: api/Comment/5
-        [HttpGet("moon/{id}")]
+        [HttpGet("planet/{id}")]
         public async Task<ActionResult<IEnumerable<PlanetComment>>> GetPostComments(int id)
         {
             if (_context.PlanetComment == null)
