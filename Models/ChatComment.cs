@@ -24,5 +24,7 @@ namespace planetnineserver.Models
 
         public int ChatId { get; set; }
         public Chat? Chat { get; set; }
-	}
+
+        public ICollection<Favorite>? Favorites { get; set; }
+    }
 }
