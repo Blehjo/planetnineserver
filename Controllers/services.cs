@@ -134,30 +134,15 @@ namespace planetnineserver.Controllers
            return Ok(users);
         }
 
-        // GET: api/User/5
-        // [HttpGet("{id}")]
-        // public async Task<ActionResult<User>> GetUser(int id)
-        // {
-        //     if (_context.Users == null)
-        //     {
-        //         return NotFound();
-        //     }
-        //     var user = await _context.Users.FindAsync(id);
-
-        //     if (user == null)
-        //     {
-        //         return NotFound();
-        //     }
-
-        //     user.ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, user.ImageLink);
-
-        //     return user;
-        // }
-
         [HttpGet("data")]
-        public IActionResult GetUserInformation()
+        public async Task<ActionResult<User>> GetUserInformation()
         {
-            var user = HttpContext.Items["User"];
+            var userId = Int32.Parse(HttpContext.Request.Cookies["user"]);
+
+            var user = _userService.GetById(userId);
+
+            user.ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, user.ImageLink);
+
             return Ok(user);
         }
 
