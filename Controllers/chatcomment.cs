@@ -107,7 +107,7 @@ namespace planetnineserver.Controllers
         // POST: api/ChatComment
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<ChatComment>> PostChatComment(ChatComment chatComment)
+        public async Task<ActionResult<ChatComment>> PostChatComment([FromForm] ChatComment chatComment)
         {
             if (_context.ChatComments == null)
             {
