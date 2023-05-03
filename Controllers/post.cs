@@ -33,6 +33,7 @@ namespace planetnineserver.Controllers
                 MediaLink = x.MediaLink,
                 UserId = x.UserId,
                 Comments = x.Comments,
+                Favorites = x.Favorites,
                 DateCreated = x.DateCreated,
                 ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.MediaLink)}).ToListAsync();
         }

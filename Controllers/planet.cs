@@ -72,7 +72,7 @@ namespace planetnineserver.Controllers
         [HttpGet("user")]
         public async Task<ActionResult<IEnumerable<Planet>>> GetUserArtificialIntelligences()
         {
-            if (_context.ArtificialIntelligences == null)
+            if (_context.Planet == null)
             {
                 return NotFound();
             }
@@ -80,6 +80,29 @@ namespace planetnineserver.Controllers
             var userId = Int32.Parse(HttpContext.Request.Cookies["user"]);
 
             return await _context.Planet.Where(p => p.UserId == userId).Select(x => new Planet()
+            {
+                PlanetId = x.PlanetId,
+                PlanetName = x.PlanetName,
+                PlanetMass = x.PlanetMass,
+                Perihelion = x.Perihelion,
+                Aphelion = x.Aphelion,
+                Gravity = x.Gravity,
+                UserId = x.UserId,
+                ImageLink = x.ImageLink,
+                Temperature = x.Temperature,
+                ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
+            }).ToListAsync();
+        }
+
+        [HttpGet("user/{id}")]
+        public async Task<ActionResult<IEnumerable<Planet>>> GetOtherUserPlanets(int id)
+        {
+            if (_context.Planet == null)
+            {
+                return NotFound();
+            }
+
+            return await _context.Planet.Where(p => p.UserId == id).Select(x => new Planet()
             {
                 PlanetId = x.PlanetId,
                 PlanetName = x.PlanetName,
