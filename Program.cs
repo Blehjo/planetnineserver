@@ -1,12 +1,19 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
-//using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
+using planetnineserver.Models.Users;
 using planetnineserver.Authorization;
 using planetnineserver.Data;
 using planetnineserver.Helpers;
 using planetnineserver.Services;
-
+using Microsoft.AspNetCore.Session;
+using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using OpenAI.GPT3.Extensions;
+using OpenAI.GPT3.Interfaces;
+using System.Configuration;
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
@@ -38,7 +45,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(MyAllowSpecificOrigins,
                       policy =>
                       {
-                          policy.WithOrigins("https://kalanchoeai.azurewebsites.net", "https://localhost:44489")
+                          policy.WithOrigins("https://planetnine.azurewebsites.net", "https://localhost:44489")
                           .AllowAnyHeader()
                           .AllowAnyMethod()
                           .AllowCredentials();
@@ -59,12 +66,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-// Add services to the container.
-
-//builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-//builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -103,4 +104,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-

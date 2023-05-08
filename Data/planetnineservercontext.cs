@@ -44,6 +44,9 @@ namespace planetnineserver.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>().HasData(
+                new User { UserId = 1, Username = "spacemarauder", FirstName = "malorian", LastName = "major", Password = "Password1", About = "cyberpunk", EmailAddress = "spacemarauder@email.com" }
+                );
             modelBuilder.Entity<Planet>().HasData(
                 new Planet { PlanetId = 2, PlanetName = "Mercury", PlanetMass = "3.30114", Perihelion = "46001200", Aphelion = "69816900", Gravity = "3.7", Temperature = "5.4291", ImageLink = "https://solarsystem.nasa.gov/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0VRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b43e79a5b43d2063c4866ccff66bede5faff17b8/mercury_th.jpg", UserId = 1 },
                 new Planet { PlanetId = 3, PlanetName = "Venus", PlanetMass = "4.86747", Perihelion = "107477000", Aphelion = "108939000", Gravity = "8.87", Temperature = "5.243", ImageLink = "https://solarsystem.nasa.gov/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajl5IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1771be6bd46710c30aa93cd6c3ababe23ad52681/480x320_venus.png?disposition=inline", UserId = 1 },
@@ -221,7 +224,7 @@ namespace planetnineserver.Data
                 new Moon { MoonId = 164, MoonName = "Psamathe", MoonMass = "2", Perihelion = "0", Aphelion = "0", Temperature = "1", Gravity = "0", PlanetId = 9, ImageLink = "", UserId = 1 },
                 new Moon { MoonId = 165, MoonName = "Sao", MoonMass = "1", Perihelion = "0", Aphelion = "0", Temperature = "1", Gravity = "0.01", PlanetId = 9, ImageLink = "", UserId = 1 },
                 new Moon { MoonId = 166, MoonName = "Laomedeia", MoonMass = "1", Perihelion = "0", Aphelion = "0", Temperature = "1", Gravity = "0.01", PlanetId = 9, ImageLink = "", UserId = 1 },
-                new Moon { MoonId = 167, MoonName = "Neso", MoonMass = "1", Perihelion = "0", Aphelion = "0", Temperature = "1", Gravity = "0", PlanetId = 9 , ImageLink = "", UserId = 1 }
+                new Moon { MoonId = 167, MoonName = "Neso", MoonMass = "1", Perihelion = "0", Aphelion = "0", Temperature = "1", Gravity = "0", PlanetId = 9, ImageLink = "", UserId = 1 }
             );
         }
     }

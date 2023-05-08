@@ -1,8 +1,4 @@
-﻿
-using KalanchoeAI_Backend.Models;
-using planetnineserver.Models;
-
-namespace KalanchoeAI_Backend.Models
+﻿namespace planetnineserver.Models
 {
     public class Prompt
     {
