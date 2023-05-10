@@ -10,7 +10,7 @@ using planetnineserver.Data;
 
 namespace planetnineserver.Migrations
 {
-    [DbContext(typeof(planetnineservercontext))]
+    [DbContext(typeof(Planetnineservercontext))]
     [Migration("20230421052032_Planets")]
     partial class Planets
     {

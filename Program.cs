@@ -11,9 +11,8 @@ using Microsoft.AspNetCore.Session;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using OpenAI.GPT3.Extensions;
-using OpenAI.GPT3.Interfaces;
 using System.Configuration;
+using OpenAI.GPT3.Extensions;
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
@@ -40,12 +39,14 @@ builder.Configuration
     .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
     .AddEnvironmentVariables();
 
+builder.Services.AddOpenAIService();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(MyAllowSpecificOrigins,
                       policy =>
                       {
-                          policy.WithOrigins("https://planetnine.azurewebsites.net", "https://localhost:44489")
+                          policy.WithOrigins("https://planetnine.azurewebsites.net", "https://localhost:44498")
                           .AllowAnyHeader()
                           .AllowAnyMethod()
                           .AllowCredentials();
@@ -58,10 +59,10 @@ builder.Services.AddControllers()
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
 );
 
+builder.Services.AddDbContext<Planetnineservercontext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("Planetnineservercontext") ?? throw new InvalidOperationException("Connection string 'planetnineservercontext' not found.")));
 
-builder.Services.AddDbContext<planetnineservercontext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("planetnineservercontext") ?? throw new InvalidOperationException("Connection string 'planetnineservercontext' not found.")));
-
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -94,7 +95,7 @@ app.UseAuthorization();
     app.UseMiddleware<ErrorHandlerMiddleware>();
 
     // custom jwt auth middleware
-    app.UseMiddleware<planetnineserver.Authorization.JwtMiddleware>();
+    app.UseMiddleware<JwtMiddleware>();
 
     app.MapControllerRoute(
     name: "default",

@@ -9,7 +9,7 @@ using planetnineserver.Data;
 
 namespace planetnineserver.Migrations
 {
-    [DbContext(typeof(planetnineservercontext))]
+    [DbContext(typeof(Planetnineservercontext))]
     partial class planetnineservercontextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

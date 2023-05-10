@@ -20,13 +20,13 @@ namespace planetnineserver.Services
 
     public class UserService : IUserService
     {
-        private planetnineservercontext _context;
+        private Planetnineservercontext _context;
         private IJwtUtils _jwtUtils;
         private readonly IMapper _mapper;
         private readonly IWebHostEnvironment _hostEnvironment;
 
         public UserService(
-            planetnineservercontext context,
+            Planetnineservercontext context,
             IJwtUtils jwtUtils,
             IMapper mapper,
             IWebHostEnvironment hostEnvironment)
