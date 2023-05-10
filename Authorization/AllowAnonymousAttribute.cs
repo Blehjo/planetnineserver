@@ -1,4 +1,4 @@
-﻿namespace planetnineserver.Authorization
+﻿namespace Planetnineserver.Authorization
 {
     [AttributeUsage(AttributeTargets.Method)]
     public class AllowAnonymousAttribute : Attribute

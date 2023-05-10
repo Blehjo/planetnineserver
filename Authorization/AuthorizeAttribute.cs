@@ -1,8 +1,8 @@
-﻿using planetnineserver.Models;
+﻿using Planetnineserver.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace planetnineserver.Authorization
+namespace Planetnineserver.Authorization
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class AuthorizeAttribute : Attribute, IAuthorizationFilter

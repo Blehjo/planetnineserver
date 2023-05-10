@@ -1,4 +1,4 @@
-﻿namespace planetnineserver.Helpers
+﻿namespace Planetnineserver.Helpers
 {
     public class AppSettings
     {

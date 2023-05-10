@@ -1,17 +1,17 @@
 {
   "Version": 1,
-  "Hash": "2AJvClC6quphuOBepeaDyHR63VKzqFil0TF3fMERzf8=",
-  "Source": "planetnineserver",
-  "BasePath": "_content/planetnineserver",
+  "Hash": "6MOgk7GJOTj0rxGvVdB4unc84i1V5QcQ88TC2Uuehsk=",
+  "Source": "Planetnineserver",
+  "BasePath": "_content/Planetnineserver",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [
     {
-      "Name": "planetnineserver/wwwroot",
-      "Source": "planetnineserver",
+      "Name": "Planetnineserver/wwwroot",
+      "Source": "Planetnineserver",
       "ContentRoot": "/Users/blehjo/projects/planetninesolution/planetnineserver/wwwroot/",
-      "BasePath": "_content/planetnineserver",
+      "BasePath": "_content/Planetnineserver",
       "Pattern": "**"
     }
   ],

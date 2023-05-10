@@ -6,10 +6,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
-using planetnineserver.Data;
-using planetnineserver.Models;
+using Planetnineserver.Data;
+using Planetnineserver.Models;
 
-namespace planetnineserver.Controllers
+namespace Planetnineserver.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -155,7 +155,7 @@ namespace planetnineserver.Controllers
         {
           if (_context.Planet == null)
           {
-              return Problem("Entity set 'planetnineservercontext.Planet'  is null.");
+              return Problem("Entity set 'Planetnineservercontext.Planet'  is null.");
           }
 
             if (planet.ImageFile != null)

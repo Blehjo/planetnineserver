@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
-namespace planetnineserver.Models
+namespace Planetnineserver.Models
 {
 	public class User
 	{

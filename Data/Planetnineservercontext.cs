@@ -1,11 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using planetnineserver.Models;
+using Planetnineserver.Models;
 
-namespace planetnineserver.Data
+namespace Planetnineserver.Data
 {
     public class Planetnineservercontext : DbContext
     {
@@ -13,36 +13,35 @@ namespace planetnineserver.Data
             : base(options)
         {
             Database.EnsureCreated();
-            Database.GetMigrations();
         }
 
-        public DbSet<planetnineserver.Models.User> User { get; set; } = default!;
+        public DbSet<Planetnineserver.Models.User> User { get; set; } = default!;
 
-        public DbSet<planetnineserver.Models.Comment> Comment { get; set; } = default!;
+        public DbSet<Planetnineserver.Models.Comment> Comment { get; set; } = default!;
 
-        public DbSet<planetnineserver.Models.Favorite> Favorite { get; set; } = default!;
+        public DbSet<Planetnineserver.Models.Favorite> Favorite { get; set; } = default!;
 
-        public DbSet<planetnineserver.Models.Follower> Follower { get; set; } = default!;
+        public DbSet<Planetnineserver.Models.Follower> Follower { get; set; } = default!;
 
-        public DbSet<planetnineserver.Models.Message> Message { get; set; } = default!;
+        public DbSet<Planetnineserver.Models.Message> Message { get; set; } = default!;
 
-        public DbSet<planetnineserver.Models.MessageComment> MessageComment { get; set; } = default!;
+        public DbSet<Planetnineserver.Models.MessageComment> MessageComment { get; set; } = default!;
 
-        public DbSet<planetnineserver.Models.Moon> Moon { get; set; } = default!;
+        public DbSet<Planetnineserver.Models.Moon> Moon { get; set; } = default!;
 
-        public DbSet<planetnineserver.Models.Planet> Planet { get; set; } = default!;
+        public DbSet<Planetnineserver.Models.Planet> Planet { get; set; } = default!;
 
-        public DbSet<planetnineserver.Models.Post> Post { get; set; } = default!;
+        public DbSet<Planetnineserver.Models.Post> Post { get; set; } = default!;
 
-        public DbSet<planetnineserver.Models.Chat> Chats { get; set; } = default!;
+        public DbSet<Planetnineserver.Models.Chat> Chats { get; set; } = default!;
 
-        public DbSet<planetnineserver.Models.ChatComment> ChatComments { get; set; } = default!;
+        public DbSet<Planetnineserver.Models.ChatComment> ChatComments { get; set; } = default!;
 
-        public DbSet<planetnineserver.Models.ArtificialIntelligence> ArtificialIntelligences { get; set; } = default!;
+        public DbSet<Planetnineserver.Models.ArtificialIntelligence> ArtificialIntelligences { get; set; } = default!;
 
-        public DbSet<planetnineserver.Models.MoonComment> MoonComment { get; set; } = default!;
+        public DbSet<Planetnineserver.Models.MoonComment> MoonComment { get; set; } = default!;
 
-        public DbSet<planetnineserver.Models.PlanetComment> PlanetComment { get; set; } = default!;
+        public DbSet<Planetnineserver.Models.PlanetComment> PlanetComment { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

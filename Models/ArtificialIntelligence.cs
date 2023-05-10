@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace planetnineserver.Models
+namespace Planetnineserver.Models
 {
 	public class ArtificialIntelligence
 	{

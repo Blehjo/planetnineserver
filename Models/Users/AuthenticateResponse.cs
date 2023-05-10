@@ -1,4 +1,4 @@
-﻿namespace planetnineserver.Models.Users
+﻿namespace Planetnineserver.Models.Users
 {
 	public class AuthenticateResponse
 	{

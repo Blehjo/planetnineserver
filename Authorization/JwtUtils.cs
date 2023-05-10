@@ -1,12 +1,12 @@
-﻿using planetnineserver.Helpers;
-using planetnineserver.Models;
+﻿using Planetnineserver.Helpers;
+using Planetnineserver.Models;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace planetnineserver.Authorization
+namespace Planetnineserver.Authorization
 {
     public interface IJwtUtils
     {

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 25.0.1705.2
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "planetnineserver", "planetnineserver.csproj", "{57933FB0-AADB-4518-9C14-C8DB5A8996D3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Planetnineserver", "Planetnineserver.csproj", "{57933FB0-AADB-4518-9C14-C8DB5A8996D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

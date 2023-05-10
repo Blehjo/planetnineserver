@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using planetnineserver.Authorization;
-using planetnineserver.Helpers;
-using planetnineserver.Models.Users;
-using planetnineserver.Services;
-using planetnineserver.Models;
-using planetnineserver.Data;
+using Planetnineserver.Authorization;
+using Planetnineserver.Helpers;
+using Planetnineserver.Models.Users;
+using Planetnineserver.Services;
+using Planetnineserver.Models;
+using Planetnineserver.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace planetnineserver.Controllers
+namespace Planetnineserver.Controllers
 {
     [Authorization.Authorize]
     [ApiController]
@@ -135,7 +135,7 @@ namespace planetnineserver.Controllers
         }
 
         [HttpGet("data")]
-        public async Task<ActionResult<User>> GetUserInformation()
+        public IActionResult GetUserInformation()
         {
             var userId = Int32.Parse(HttpContext.Request.Cookies["user"]);
 

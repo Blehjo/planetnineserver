@@ -4,14 +4,14 @@ using OpenAI.GPT3.Managers;
 using OpenAI.GPT3.ObjectModels;
 using OpenAI.GPT3.ObjectModels.RequestModels;
 
-namespace planetnineserver.Controllers
+namespace Planetnineserver.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
     public class ChatgptController : ControllerBase
     {
 
-        private string ApiKey;
+        private string ApiKey = Environment.GetEnvironmentVariable("ApiKey");
         private string response;
         private string Organization;
         private IConfiguration configuration;

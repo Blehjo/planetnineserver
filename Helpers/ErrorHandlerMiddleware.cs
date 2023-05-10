@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Text.Json;
 
-namespace planetnineserver.Helpers
+namespace Planetnineserver.Helpers
 {
     public class ErrorHandlerMiddleware
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace planetnineserver.Models.Users
+namespace Planetnineserver.Models.Users
 {
 	public class AuthenticateRequest
 	{

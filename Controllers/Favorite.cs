@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using planetnineserver.Data;
-using planetnineserver.Models;
+using Planetnineserver.Data;
+using Planetnineserver.Models;
 
-namespace planetnineserver.Controllers
+namespace Planetnineserver.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -115,7 +115,7 @@ namespace planetnineserver.Controllers
         {
           if (_context.Favorite == null)
           {
-              return Problem("Entity set 'planetnineservercontext.Favorite'  is null.");
+              return Problem("Entity set 'Planetnineservercontext.Favorite'  is null.");
           }
 
             favorite.UserId = Int32.Parse(HttpContext.Request.Cookies["user"]);

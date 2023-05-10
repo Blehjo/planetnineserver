@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using planetnineserver.Authorization;
-using planetnineserver.Helpers;
-using planetnineserver.Models;
-using planetnineserver.Models.Users;
-using planetnineserver.Data;
+using Planetnineserver.Authorization;
+using Planetnineserver.Helpers;
+using Planetnineserver.Models;
+using Planetnineserver.Models.Users;
+using Planetnineserver.Data;
 using Microsoft.AspNetCore.Mvc;
 
-namespace planetnineserver.Services
+namespace Planetnineserver.Services
 {
     public interface IUserService
     {

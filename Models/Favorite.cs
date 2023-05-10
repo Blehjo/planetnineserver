@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace planetnineserver.Models
+namespace Planetnineserver.Models
 {
     public class Favorite
     {

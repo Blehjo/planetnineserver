@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using planetnineserver.Data;
-using planetnineserver.Models;
+using Planetnineserver.Data;
+using Planetnineserver.Models;
 
-namespace planetnineserver.Controllers
+namespace Planetnineserver.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -100,7 +100,7 @@ namespace planetnineserver.Controllers
         {
             if (_context.MessageComment == null)
             {
-                return Problem("Entity set 'planetnineservercontext.MessageComment'  is null.");
+                return Problem("Entity set 'Planetnineservercontext.MessageComment'  is null.");
             }
 
             if (messageComment.ImageFile != null)

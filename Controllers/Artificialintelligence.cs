@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using planetnineserver.Data;
-using planetnineserver.Models;
+using Planetnineserver.Data;
+using Planetnineserver.Models;
 
-namespace planetnineserver.Controllers
+namespace Planetnineserver.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -141,7 +141,7 @@ namespace planetnineserver.Controllers
         {
             if (_context.ArtificialIntelligences == null)
             {
-                return Problem("Entity set 'planetnineservers.ArtificialIntelligence'  is null.");
+                return Problem("Entity set 'Planetnineservers.ArtificialIntelligence'  is null.");
             }
 
             if (artificialIntelligence.ImageFile != null)

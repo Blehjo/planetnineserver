@@ -1,4 +1,4 @@
-﻿namespace planetnineserver.Models
+﻿namespace Planetnineserver.Models
 {
     public class Prompt
     {

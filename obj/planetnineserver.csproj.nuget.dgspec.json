@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "/Users/blehjo/projects/planetninesolution/planetnineserver/planetnineserver.csproj": {}
+    "/Users/blehjo/projects/planetninesolution/planetnineserver/Planetnineserver.csproj": {}
   },
   "projects": {
-    "/Users/blehjo/projects/planetninesolution/planetnineserver/planetnineserver.csproj": {
+    "/Users/blehjo/projects/planetninesolution/planetnineserver/Planetnineserver.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/blehjo/projects/planetninesolution/planetnineserver/planetnineserver.csproj",
-        "projectName": "planetnineserver",
-        "projectPath": "/Users/blehjo/projects/planetninesolution/planetnineserver/planetnineserver.csproj",
+        "projectUniqueName": "/Users/blehjo/projects/planetninesolution/planetnineserver/Planetnineserver.csproj",
+        "projectName": "Planetnineserver",
+        "projectPath": "/Users/blehjo/projects/planetninesolution/planetnineserver/Planetnineserver.csproj",
         "packagesPath": "/Users/blehjo/.nuget/packages/",
         "outputPath": "/Users/blehjo/projects/planetninesolution/planetnineserver/obj/",
         "projectStyle": "PackageReference",
@@ -45,37 +45,41 @@
             },
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
-              "version": "[12.0.0, )"
+              "version": "[12.0.1, )"
             },
             "BCrypt.Net-Core": {
               "target": "Package",
               "version": "[1.6.0, )"
             },
-            "Betalgo.OpenAI": {
+            "Betalgo.OpenAI.GPT3": {
               "target": "Package",
-              "version": "[6.8.5, )"
+              "version": "[6.8.4, )"
             },
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
-              "version": "[7.0.4, )"
+              "version": "[7.0.5, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
-              "version": "[7.0.3, )"
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.5, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[7.0.4, )"
+              "version": "[7.0.5, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[7.0.4, )"
+              "version": "[7.0.5, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.4, )"
+              "version": "[7.0.5, )"
             },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
@@ -85,9 +89,13 @@
               "target": "Package",
               "version": "[7.0.0, )"
             },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.30.0, )"
+            },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[7.0.5, )"
+              "version": "[7.0.6, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
@@ -95,7 +103,11 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.4.0, )"
+              "version": "[6.5.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.30.0, )"
             },
             "System.Text.Json": {
               "target": "Package",

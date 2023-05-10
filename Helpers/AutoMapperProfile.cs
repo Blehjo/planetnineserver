@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using planetnineserver.Models;
-using planetnineserver.Models.Users;
+using Planetnineserver.Models;
+using Planetnineserver.Models.Users;
 
-namespace planetnineserver.Helpers
+namespace Planetnineserver.Helpers
 {
     public class AutoMapperProfile : Profile
     {

@@ -1,6 +1,6 @@
-﻿using planetnineserver.Services;
+﻿using Planetnineserver.Services;
 
-namespace planetnineserver.Authorization
+namespace Planetnineserver.Authorization
 {
     public class JwtMiddleware
     {

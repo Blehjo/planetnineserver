@@ -475,7 +475,7 @@
     ]
   },
   "packageFolders": {
-    "/Users/blehjo/projects/planetnine/planetnineserver/obj/.store/.stage/uzl3rmba.wh1": {}
+    "/Users/blehjo/projects/planetnine/Planetnineserver/obj/.store/.stage/uzl3rmba.wh1": {}
   },
   "project": {
     "version": "1.0.0",
@@ -483,8 +483,8 @@
       "projectUniqueName": "/var/folders/72/0vw1m09d3ml3fhdctvhbbbrr0000gn/T/8bcf8d35-c04e-431d-acd2-6ee64e2d7087/restore.csproj",
       "projectName": "restore",
       "projectPath": "/var/folders/72/0vw1m09d3ml3fhdctvhbbbrr0000gn/T/8bcf8d35-c04e-431d-acd2-6ee64e2d7087/restore.csproj",
-      "packagesPath": "/Users/blehjo/projects/planetnine/planetnineserver/obj/.store/.stage/uzl3rmba.wh1",
-      "outputPath": "/Users/blehjo/projects/planetnine/planetnineserver/obj/.store/.stage/uzl3rmba.wh1/",
+      "packagesPath": "/Users/blehjo/projects/planetnine/Planetnineserver/obj/.store/.stage/uzl3rmba.wh1",
+      "outputPath": "/Users/blehjo/projects/planetnine/Planetnineserver/obj/.store/.stage/uzl3rmba.wh1/",
       "projectStyle": "DotnetToolReference",
       "configFilePaths": [
         "/Users/blehjo/.nuget/NuGet/NuGet.Config"

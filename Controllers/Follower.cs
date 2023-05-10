@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using planetnineserver.Data;
-using planetnineserver.Models;
+using Planetnineserver.Data;
+using Planetnineserver.Models;
 
-namespace planetnineserver.Controllers
+namespace Planetnineserver.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -88,7 +88,7 @@ namespace planetnineserver.Controllers
         {
           if (_context.Follower == null)
           {
-              return Problem("Entity set 'planetnineservercontext.Follower'  is null.");
+              return Problem("Entity set 'Planetnineservercontext.Follower'  is null.");
           }
             _context.Follower.Add(follower);
             await _context.SaveChangesAsync();
