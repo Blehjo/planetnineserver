@@ -51,9 +51,9 @@
               "target": "Package",
               "version": "[1.6.0, )"
             },
-            "Betalgo.OpenAI.GPT3": {
+            "Betalgo.OpenAI": {
               "target": "Package",
-              "version": "[6.8.3, )"
+              "version": "[6.8.5, )"
             },
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",

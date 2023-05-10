@@ -12,6 +12,8 @@ namespace planetnineserver.Data
         public planetnineservercontext (DbContextOptions<planetnineservercontext> options)
             : base(options)
         {
+            Database.EnsureCreated();
+            Database.Migrate();
         }
 
         public DbSet<planetnineserver.Models.User> User { get; set; } = default!;
