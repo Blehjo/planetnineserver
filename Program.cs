@@ -1,17 +1,11 @@
 using Planetnineserver.Data;
-using Microsoft.AspNetCore.Session;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Planetnineserver.Models.Users;
 using OpenAI.GPT3.Extensions;
-using System.Configuration;
 using Planetnineserver.Services;
 using Planetnineserver.Helpers;
 using Planetnineserver.Authorization;
-using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
@@ -35,7 +29,7 @@ var builder = WebApplication.CreateBuilder(args);
 }
 
 builder.Configuration
-    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
     .AddEnvironmentVariables();
 
 builder.Services.AddOpenAIService();
@@ -76,12 +70,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseStaticFiles(new StaticFileOptions
-{
-    FileProvider = new PhysicalFileProvider(
-        Path.Combine(builder.Environment.ContentRootPath, "Images")),
-    RequestPath = "/Images"
-});
+//app.UseStaticFiles(new StaticFileOptions
+//{
+//    FileProvider = new PhysicalFileProvider(
+//        Path.Combine(builder.Environment.ContentRootPath, "Images")),
+//    RequestPath = "/Images"
+//});
 
 app.UseRouting();
 

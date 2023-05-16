@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "a5wVmIhLP6TsiP+OxQIdxZ47SzyDl08k/QTbJGeHWBY=",
+  "Hash": "ywSUaYj7JFtPJid1gCBz9R683+qT7E32CFi86qVpnxw=",
   "Source": "Planetnineserver",
   "BasePath": "_content/Planetnineserver",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "Planetnineserver/wwwroot",
       "Source": "Planetnineserver",
-      "ContentRoot": "/Users/blehjo/projects/planetninesolution/planetnineserver/wwwroot/",
+      "ContentRoot": "/Users/blehjo/projects/planetninesolution/Planetnineserver/wwwroot/",
       "BasePath": "_content/Planetnineserver",
       "Pattern": "**"
     }

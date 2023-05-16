@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/blehjo/projects/planetninesolution/planetnineserver/Planetnineserver.csproj": {}
+    "/Users/blehjo/projects/planetninesolution/Planetnineserver/Planetnineserver.csproj": {}
   },
   "projects": {
-    "/Users/blehjo/projects/planetninesolution/planetnineserver/Planetnineserver.csproj": {
+    "/Users/blehjo/projects/planetninesolution/Planetnineserver/Planetnineserver.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/blehjo/projects/planetninesolution/planetnineserver/Planetnineserver.csproj",
+        "projectUniqueName": "/Users/blehjo/projects/planetninesolution/Planetnineserver/Planetnineserver.csproj",
         "projectName": "Planetnineserver",
-        "projectPath": "/Users/blehjo/projects/planetninesolution/planetnineserver/Planetnineserver.csproj",
+        "projectPath": "/Users/blehjo/projects/planetninesolution/Planetnineserver/Planetnineserver.csproj",
         "packagesPath": "/Users/blehjo/.nuget/packages/",
-        "outputPath": "/Users/blehjo/projects/planetninesolution/planetnineserver/obj/",
+        "outputPath": "/Users/blehjo/projects/planetninesolution/Planetnineserver/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/blehjo/.nuget/NuGet/NuGet.Config"
@@ -82,6 +82,10 @@
               "version": "[7.0.5, )"
             },
             "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.FileProviders.Physical": {
               "target": "Package",
               "version": "[7.0.0, )"
             },
