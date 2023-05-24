@@ -310,3 +310,5 @@
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/Planetnineserver.pdb
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/Planetnineserver.genruntimeconfig.cache
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/ref/Planetnineserver.dll
+/Users/blehjo/projects/planetninesolution/planetnineserver/bin/Release/net7.0/Microsoft.Extensions.Configuration.KeyPerFile.dll
+/Users/blehjo/projects/planetninesolution/planetnineserver/bin/Release/net7.0/Microsoft.Extensions.FileProviders.Embedded.dll

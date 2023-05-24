@@ -9,7 +9,7 @@ namespace Planetnineserver.Data
             : base(options)
         {
             Database.EnsureCreated();
-            //Database.GetMigrations();
+            Database.GetMigrations();
         }
 
         public DbSet<Planetnineserver.Models.User> User { get; set; } = default!;

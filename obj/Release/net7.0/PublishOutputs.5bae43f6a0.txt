@@ -42,7 +42,9 @@
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/Microsoft.EntityFrameworkCore.Relational.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/Microsoft.EntityFrameworkCore.Sqlite.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/Microsoft.EntityFrameworkCore.SqlServer.dll
+/Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/Microsoft.Extensions.Configuration.KeyPerFile.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/Microsoft.Extensions.DependencyModel.dll
+/Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/Microsoft.Extensions.FileProviders.Embedded.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/Microsoft.Identity.Client.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/Microsoft.Identity.Client.Extensions.Msal.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/Microsoft.IdentityModel.Abstractions.dll

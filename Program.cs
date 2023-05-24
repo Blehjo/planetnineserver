@@ -5,7 +5,6 @@ using Planetnineserver.Services;
 using Planetnineserver.Helpers;
 using Planetnineserver.Authorization;
 using Microsoft.Extensions.FileProviders;
-using System.IO;
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
@@ -39,7 +38,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(MyAllowSpecificOrigins,
                       policy =>
                       {
-                          policy.WithOrigins("https://planetnine.azurewebsites.net", "https://localhost:44498")
+                          policy.WithOrigins("https://planetnine.azurewebsites.net", "https://localhost:44498", "https://localhost:7225")
                           .AllowAnyHeader()
                           .AllowAnyMethod()
                           .AllowCredentials();
@@ -62,13 +61,15 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (!app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseExceptionHandler("/Error");
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();
+
+app.UseStaticFiles();
 
 //app.UseStaticFiles(new StaticFileOptions
 //{
