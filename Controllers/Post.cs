@@ -35,7 +35,7 @@ namespace Planetnineserver.Controllers
                 Comments = x.Comments,
                 Favorites = x.Favorites,
                 DateCreated = x.DateCreated,
-                ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.MediaLink)}).ToListAsync();
+                ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.MediaLink)}).ToListAsync();
         }
 
         // GET: api/Post/5
@@ -54,7 +54,7 @@ namespace Planetnineserver.Controllers
                 return NotFound();
             }
 
-            post.ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, post.MediaLink);
+            post.ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, post.MediaLink);
 
             return post;
         }
@@ -76,7 +76,7 @@ namespace Planetnineserver.Controllers
                 MediaLink = x.MediaLink,
                 UserId = x.UserId,
                 DateCreated = x.DateCreated,
-                ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.MediaLink)
+                ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.MediaLink)
             }).ToListAsync();
         }
 
@@ -95,7 +95,7 @@ namespace Planetnineserver.Controllers
                 MediaLink = x.MediaLink,
                 UserId = x.UserId,
                 DateCreated = x.DateCreated,
-                ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.MediaLink)
+                ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.MediaLink)
             }).ToListAsync();
         }
 
@@ -184,7 +184,7 @@ namespace Planetnineserver.Controllers
         {
             string imageName = new String(Path.GetFileNameWithoutExtension(imageFile.FileName).Take(10).ToArray()).Replace(' ', '-');
             imageName = imageName + DateTime.Now.ToString("yymmssfff") + Path.GetExtension(imageFile.FileName);
-            var imagePath = Path.Combine(_hostEnvironment.ContentRootPath, "Images", imageName);
+            var imagePath = Path.Combine(_hostEnvironment.WebRootPath, "images", imageName);
             using (var fileStream = new FileStream(imagePath, FileMode.Create))
             {
                 await imageFile.CopyToAsync(fileStream);
@@ -195,7 +195,7 @@ namespace Planetnineserver.Controllers
         [NonAction]
         public void DeleteImage(string imageName)
         {
-            var imagePath = Path.Combine(_hostEnvironment.ContentRootPath, "Images", imageName);
+            var imagePath = Path.Combine(_hostEnvironment.WebRootPath, "images", imageName);
             if (System.IO.File.Exists(imagePath))
                 System.IO.File.Delete(imagePath);
         }

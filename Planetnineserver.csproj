@@ -67,6 +67,7 @@
     <None Remove="Images\StaticFiles\logoblehseton.jpg" />
     <None Remove="Images\" />
     <None Remove="Models\Users\" />
+    <None Remove="Images\logoblehseton.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -76,11 +77,14 @@
     <Folder Include="wwwroot\" />
     <Folder Include="Images\" />
     <Folder Include="Models\Users\" />
+    <Folder Include="wwwroot\images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />
+    <Content Remove="wwwroot\images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\StaticFiles\logoblehseton.jpg" />
+    <Content Include="Images\logoblehseton.jpg" />
   </ItemGroup>
 </Project>

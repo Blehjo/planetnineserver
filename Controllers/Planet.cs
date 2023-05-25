@@ -44,7 +44,7 @@ namespace Planetnineserver.Controllers
                 UserId = x.UserId,
                 ImageLink = x.ImageLink,
                 Temperature = x.Temperature,
-                ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
+                ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
             }).ToListAsync();
         }
 
@@ -63,7 +63,7 @@ namespace Planetnineserver.Controllers
                 return NotFound();
             }
 
-            planet.ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, planet.ImageLink);
+            planet.ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, planet.ImageLink);
 
             return planet;
         }
@@ -90,7 +90,7 @@ namespace Planetnineserver.Controllers
                 UserId = x.UserId,
                 ImageLink = x.ImageLink,
                 Temperature = x.Temperature,
-                ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
+                ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
             }).ToListAsync();
         }
 
@@ -113,7 +113,7 @@ namespace Planetnineserver.Controllers
                 UserId = x.UserId,
                 ImageLink = x.ImageLink,
                 Temperature = x.Temperature,
-                ImageSource = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
+                ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
             }).ToListAsync();
         }
 
@@ -201,7 +201,7 @@ namespace Planetnineserver.Controllers
         {
             string imageName = new String(Path.GetFileNameWithoutExtension(imageFile.FileName).Take(10).ToArray()).Replace(' ', '-');
             imageName = imageName + DateTime.Now.ToString("yymmssfff") + Path.GetExtension(imageFile.FileName);
-            var imagePath = Path.Combine(_hostEnvironment.ContentRootPath, "Images", imageName);
+            var imagePath = Path.Combine(_hostEnvironment.WebRootPath, "images", imageName);
             using (var fileStream = new FileStream(imagePath, FileMode.Create))
             {
                 await imageFile.CopyToAsync(fileStream);
@@ -212,7 +212,7 @@ namespace Planetnineserver.Controllers
         [NonAction]
         public void DeleteImage(string imageName)
         {
-            var imagePath = Path.Combine(_hostEnvironment.ContentRootPath, "Images", imageName);
+            var imagePath = Path.Combine(_hostEnvironment.WebRootPath, "images", imageName);
             if (System.IO.File.Exists(imagePath))
                 System.IO.File.Delete(imagePath);
         }

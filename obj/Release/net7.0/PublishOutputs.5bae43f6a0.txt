@@ -8,9 +8,10 @@
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/Azure.Core.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/Azure.Identity.dll
-/Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/BCrypt.Net-Core.dll
+/Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/BCrypt.Net-Next.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/OpenAI.GPT3.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/Humanizer.dll
+/Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/System.Net.Http.Formatting.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/Microsoft.AspNetCore.JsonPatch.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/Microsoft.AspNetCore.OpenApi.dll
@@ -42,9 +43,7 @@
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/Microsoft.EntityFrameworkCore.Relational.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/Microsoft.EntityFrameworkCore.Sqlite.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/Microsoft.EntityFrameworkCore.SqlServer.dll
-/Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/Microsoft.Extensions.Configuration.KeyPerFile.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/Microsoft.Extensions.DependencyModel.dll
-/Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/Microsoft.Extensions.FileProviders.Embedded.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/Microsoft.Identity.Client.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/Microsoft.Identity.Client.Extensions.Msal.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/Microsoft.IdentityModel.Abstractions.dll
@@ -75,6 +74,8 @@
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/NuGet.ProjectModel.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/NuGet.Protocol.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/NuGet.Versioning.dll
+/Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/OpenAI_API.dll
+/Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/OpenAI-DotNet.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/SQLitePCLRaw.batteries_v2.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/SQLitePCLRaw.core.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/SQLitePCLRaw.provider.e_sqlite3.dll
@@ -269,7 +270,6 @@
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/runtimes/linux-musl-arm/native/libe_sqlite3.so
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/runtimes/linux-musl-arm64/native/libe_sqlite3.so
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/runtimes/linux-musl-x64/native/libe_sqlite3.so
-/Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/runtimes/linux-ppc64le/native/libe_sqlite3.so
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/runtimes/linux-s390x/native/libe_sqlite3.so
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/runtimes/linux-x64/native/libe_sqlite3.so
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/PubTmp/Out/runtimes/linux-x86/native/libe_sqlite3.so

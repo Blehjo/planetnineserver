@@ -10,7 +10,6 @@
 /Users/blehjo/projects/planetninesolution/Planetnineserver/bin/Release/net7.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/bin/Release/net7.0/Azure.Core.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/bin/Release/net7.0/Azure.Identity.dll
-/Users/blehjo/projects/planetninesolution/Planetnineserver/bin/Release/net7.0/BCrypt.Net-Core.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/bin/Release/net7.0/OpenAI.GPT3.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/bin/Release/net7.0/Humanizer.dll
 /Users/blehjo/projects/planetninesolution/Planetnineserver/bin/Release/net7.0/Microsoft.AspNetCore.JsonPatch.dll
@@ -272,7 +271,6 @@
 /Users/blehjo/projects/planetninesolution/Planetnineserver/bin/Release/net7.0/runtimes/linux-musl-arm/native/libe_sqlite3.so
 /Users/blehjo/projects/planetninesolution/Planetnineserver/bin/Release/net7.0/runtimes/linux-musl-arm64/native/libe_sqlite3.so
 /Users/blehjo/projects/planetninesolution/Planetnineserver/bin/Release/net7.0/runtimes/linux-musl-x64/native/libe_sqlite3.so
-/Users/blehjo/projects/planetninesolution/Planetnineserver/bin/Release/net7.0/runtimes/linux-ppc64le/native/libe_sqlite3.so
 /Users/blehjo/projects/planetninesolution/Planetnineserver/bin/Release/net7.0/runtimes/linux-s390x/native/libe_sqlite3.so
 /Users/blehjo/projects/planetninesolution/Planetnineserver/bin/Release/net7.0/runtimes/linux-x64/native/libe_sqlite3.so
 /Users/blehjo/projects/planetninesolution/Planetnineserver/bin/Release/net7.0/runtimes/linux-x86/native/libe_sqlite3.so
@@ -310,5 +308,7 @@
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/Planetnineserver.pdb
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/Planetnineserver.genruntimeconfig.cache
 /Users/blehjo/projects/planetninesolution/Planetnineserver/obj/Release/net7.0/ref/Planetnineserver.dll
-/Users/blehjo/projects/planetninesolution/planetnineserver/bin/Release/net7.0/Microsoft.Extensions.Configuration.KeyPerFile.dll
-/Users/blehjo/projects/planetninesolution/planetnineserver/bin/Release/net7.0/Microsoft.Extensions.FileProviders.Embedded.dll
+/Users/blehjo/projects/planetninesolution/planetnineserver/bin/Release/net7.0/BCrypt.Net-Next.dll
+/Users/blehjo/projects/planetninesolution/planetnineserver/bin/Release/net7.0/System.Net.Http.Formatting.dll
+/Users/blehjo/projects/planetninesolution/planetnineserver/bin/Release/net7.0/OpenAI_API.dll
+/Users/blehjo/projects/planetninesolution/planetnineserver/bin/Release/net7.0/OpenAI-DotNet.dll

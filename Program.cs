@@ -38,7 +38,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(MyAllowSpecificOrigins,
                       policy =>
                       {
-                          policy.WithOrigins("https://planetnine.azurewebsites.net", "https://localhost:44498", "https://localhost:7225")
+                          policy.WithOrigins("https://planetnine.azurewebsites.net", "https://localhost:44489", "https://localhost:7225")
                           .AllowAnyHeader()
                           .AllowAnyMethod()
                           .AllowCredentials();
@@ -71,31 +71,32 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 
-//app.UseStaticFiles(new StaticFileOptions
-//{
-//    FileProvider = new PhysicalFileProvider(
-//        Path.Combine(builder.Environment.ContentRootPath, "Images")),
-//    RequestPath = "/Images"
-//});
-
 app.UseRouting();
 
 app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 
+app.UseStaticFiles(new StaticFileOptions
 {
-    // global error handler
-    app.UseMiddleware<ErrorHandlerMiddleware>();
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(builder.Environment.WebRootPath, "images")),
+    RequestPath = "/images"
+});
 
-    // custom jwt auth middleware
-    app.UseMiddleware<Planetnineserver.Authorization.JwtMiddleware>();
+System.Diagnostics.Debug.WriteLine($"WebRoot Path: {Path.Combine(builder.Environment.WebRootPath, "images")}");
+System.Diagnostics.Debug.WriteLine($"WebRoot Path: {builder.Environment.WebRootPath}");
 
-    app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller}/{action=Index}/{id?}");
-}
+// global error handler
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
-app.MapControllers();
+// custom jwt auth middleware
+app.UseMiddleware<JwtMiddleware>();
+
+app.MapControllerRoute(
+name: "default",
+pattern: "{controller}/{action=Index}/{id?}");
+
+//app.MapControllers();
 
 app.Run();

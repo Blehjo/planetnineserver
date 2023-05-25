@@ -1,19 +1,54 @@
 {
   "Version": 1,
-  "Hash": "ywSUaYj7JFtPJid1gCBz9R683+qT7E32CFi86qVpnxw=",
-  "Source": "Planetnineserver",
-  "BasePath": "_content/Planetnineserver",
+  "Hash": "Th/DZSA/riZtiB+KDOgtFZDK/LQrHcbHe3k9q9Gycck=",
+  "Source": "planetnineserver",
+  "BasePath": "_content/planetnineserver",
   "Mode": "Default",
   "ManifestType": "Publish",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [
     {
-      "Name": "Planetnineserver/wwwroot",
-      "Source": "Planetnineserver",
-      "ContentRoot": "/Users/blehjo/projects/planetninesolution/Planetnineserver/wwwroot/",
-      "BasePath": "_content/Planetnineserver",
+      "Name": "planetnineserver/wwwroot",
+      "Source": "planetnineserver",
+      "ContentRoot": "/Users/blehjo/projects/planetninesolution/planetnineserver/wwwroot/",
+      "BasePath": "_content/planetnineserver",
       "Pattern": "**"
     }
   ],
-  "Assets": []
+  "Assets": [
+    {
+      "Identity": "/Users/blehjo/projects/planetninesolution/planetnineserver/wwwroot/images/logoblehseton.jpg",
+      "SourceId": "planetnineserver",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/blehjo/projects/planetninesolution/planetnineserver/wwwroot/",
+      "BasePath": "_content/planetnineserver",
+      "RelativePath": "images/logoblehseton.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/logoblehseton.jpg"
+    },
+    {
+      "Identity": "/Users/blehjo/projects/planetninesolution/planetnineserver/wwwroot/logoblehseton.jpg",
+      "SourceId": "planetnineserver",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/blehjo/projects/planetninesolution/planetnineserver/wwwroot/",
+      "BasePath": "_content/planetnineserver",
+      "RelativePath": "logoblehseton.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/logoblehseton.jpg"
+    }
+  ]
 }

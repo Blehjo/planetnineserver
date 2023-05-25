@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v7.0": {
-      "Planetnineserver/1.0.0": {
+      "planetnineserver/1.0.0": {
         "dependencies": {
           "AutoMapper": "12.0.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.0",
@@ -29,7 +29,7 @@
           "Swashbuckle.AspNetCore": "6.4.0"
         },
         "runtime": {
-          "Planetnineserver.dll": {}
+          "planetnineserver.dll": {}
         }
       },
       "AutoMapper/12.0.1": {
@@ -2798,7 +2798,7 @@
     }
   },
   "libraries": {
-    "Planetnineserver/1.0.0": {
+    "planetnineserver/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

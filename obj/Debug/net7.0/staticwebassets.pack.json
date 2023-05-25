@@ -1,24 +1,28 @@
 {
   "Files": [
     {
-      "Id": "/Users/blehjo/projects/KalanchoeAI/Planetnineserver/wwwroot/Images/StaticFiles",
-      "PackagePath": "staticwebassets/Images/StaticFiles"
+      "Id": "/Users/blehjo/projects/planetninesolution/planetnineserver/wwwroot/images/logoblehseton.jpg",
+      "PackagePath": "staticwebassets/images/logoblehseton.jpg"
     },
     {
-      "Id": "obj/Release/net7.0/staticwebassets/msbuild.Planetnineserver.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "/Users/blehjo/projects/planetninesolution/planetnineserver/wwwroot/logoblehseton.jpg",
+      "PackagePath": "staticwebassets/logoblehseton.jpg"
+    },
+    {
+      "Id": "obj/Debug/net7.0/staticwebassets/msbuild.build.planetnineserver.props",
+      "PackagePath": "build\\planetnineserver.props"
+    },
+    {
+      "Id": "obj/Debug/net7.0/staticwebassets/msbuild.buildMultiTargeting.planetnineserver.props",
+      "PackagePath": "buildMultiTargeting\\planetnineserver.props"
+    },
+    {
+      "Id": "obj/Debug/net7.0/staticwebassets/msbuild.buildTransitive.planetnineserver.props",
+      "PackagePath": "buildTransitive\\planetnineserver.props"
+    },
+    {
+      "Id": "obj/Debug/net7.0/staticwebassets/msbuild.planetnineserver.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
-    },
-    {
-      "Id": "obj/Release/net7.0/staticwebassets/msbuild.build.Planetnineserver.props",
-      "PackagePath": "build\\Planetnineserver.props"
-    },
-    {
-      "Id": "obj/Release/net7.0/staticwebassets/msbuild.buildMultiTargeting.Planetnineserver.props",
-      "PackagePath": "buildMultiTargeting\\Planetnineserver.props"
-    },
-    {
-      "Id": "obj/Release/net7.0/staticwebassets/msbuild.buildTransitive.Planetnineserver.props",
-      "PackagePath": "buildTransitive\\Planetnineserver.props"
     }
   ],
   "ElementsToRemove": []

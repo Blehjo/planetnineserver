@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3H/mCSYPp19SaS/QvcZmhqhJWMxocU1rVFvameDczUxwYCkZO9WBYQw/GXRBJ5KMCy9RFTCfOqvKf6/OwzVFlQ==",
+  "dgSpecHash": "Q7R77bMi7SSk+7IsyRkN0K8aMxm4ra9hVc2F3pQTpLGy9J3huucD/GOaYLTejxoOyYWtuwgtgBzYlC1sUAm9cA==",
   "success": true,
-  "projectFilePath": "/Users/blehjo/projects/planetninesolution/Planetnineserver/Planetnineserver.csproj",
+  "projectFilePath": "/Users/blehjo/projects/planetninesolution/planetnineserver/planetnineserver.csproj",
   "expectedPackageFiles": [
     "/Users/blehjo/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/Users/blehjo/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.0/automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
