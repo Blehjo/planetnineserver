@@ -20,7 +20,7 @@ namespace Planetnineserver.Models
 
         public string Type { get; set; } = "moon";
 
-        public string ImageLink { get; set; }
+        public string? ImageLink { get; set; }
 
         [NotMapped]
         public IFormFile? ImageFile { get; set; }

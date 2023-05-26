@@ -72,6 +72,7 @@ namespace Planetnineserver.Controllers
                 Aphelion = x.Aphelion,
                 Gravity = x.Gravity,
                 UserId = x.UserId,
+                Favorites = x.Favorites,
                 ImageLink = x.ImageLink,
                 Temperature = x.Temperature,
                 ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
@@ -96,6 +97,7 @@ namespace Planetnineserver.Controllers
                     Aphelion = x.Aphelion,
                     Gravity = x.Gravity,
                     UserId = x.UserId,
+                    Favorites = x.Favorites,
                     ImageLink = x.ImageLink,
                     Temperature = x.Temperature,
                     ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
@@ -135,28 +137,47 @@ namespace Planetnineserver.Controllers
 
         // POST: api/moon
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Moon>> PostMoon([FromForm] Moon moon)
+        [HttpPost("{id}")]
+        public async Task<ActionResult<IEnumerable<Moon>>> PostMoon(int id, [FromForm] Moon moon)
         {
-          if (_context.Moon == null)
-          {
-              return Problem("Entity set 'Planetnineservercontext.Moon'  is null.");
-          }
+            if (_context.Moon == null)
+            {
+                return Problem("Entity set 'Planetnineservercontext.Moon'  is null.");
+            }
 
             if (moon.ImageFile != null)
             {
                 moon.ImageLink = await SaveImage(moon.ImageFile);
             }
 
+            moon.PlanetId = id;
+
             _context.Moon.Add(moon);
+
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetMoon", new { id = moon.MoonId }, moon);
+            var userId = Int32.Parse(HttpContext.Request.Cookies["user"]);
+
+            return await _context.Moon.Where(p => p.UserId == userId).Select(x => new Moon()
+            {
+                MoonId = x.MoonId,
+                MoonName = x.MoonName,
+                MoonMass = x.MoonMass,
+                Perihelion = x.Perihelion,
+                Aphelion = x.Aphelion,
+                Gravity = x.Gravity,
+                UserId = x.UserId,
+                PlanetId = x.PlanetId,
+                Favorites = x.Favorites,
+                ImageLink = x.ImageLink,
+                Temperature = x.Temperature,
+                ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
+            }).ToListAsync();
         }
 
         // DELETE: api/moon/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMoon(int id)
+        public async Task<ActionResult<IEnumerable<Moon>>> DeleteMoon(int id)
         {
             if (_context.Moon == null)
             {
@@ -171,7 +192,22 @@ namespace Planetnineserver.Controllers
             _context.Moon.Remove(moon);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            var userId = Int32.Parse(HttpContext.Request.Cookies["user"]);
+
+            return await _context.Moon.Where(p => p.UserId == userId).Select(x => new Moon()
+            {
+                MoonId = x.MoonId,
+                MoonName = x.MoonName,
+                MoonMass = x.MoonMass,
+                Perihelion = x.Perihelion,
+                Aphelion = x.Aphelion,
+                Gravity = x.Gravity,
+                UserId = x.UserId,
+                Favorites = x.Favorites,
+                ImageLink = x.ImageLink,
+                Temperature = x.Temperature,
+                ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
+            }).ToListAsync();
         }
 
         private bool MoonExists(int id)

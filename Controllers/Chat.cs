@@ -134,7 +134,7 @@ namespace Planetnineserver.Controllers
 
         // DELETE: api/Chat/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteChat(int id)
+        public async Task<ActionResult<IEnumerable<Chat>>> DeleteChat(int id)
         {
             if (_context.Chats == null)
             {
@@ -149,7 +149,9 @@ namespace Planetnineserver.Controllers
             _context.Chats.Remove(chat);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            var userId = Int32.Parse(HttpContext.Request.Cookies["user"]);
+
+            return await _context.Chats.Where(c => c.UserId == userId).ToListAsync();
         }
 
         private bool ChatExists(int id)

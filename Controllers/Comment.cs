@@ -39,6 +39,7 @@ namespace Planetnineserver.Controllers
                 UserId = x.UserId,
                 MediaLink = x.MediaLink,
                 PostId = x.PostId,
+                Favorites = x.Favorites,
                 ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.MediaLink)}).ToListAsync();
         }
 
@@ -80,6 +81,7 @@ namespace Planetnineserver.Controllers
                 UserId = x.UserId,
                 MediaLink = x.MediaLink,
                 PostId = x.PostId,
+                Favorites = x.Favorites,
                 ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.MediaLink)
             }).Where(c => c.PostId == id).ToListAsync();
         }
@@ -117,8 +119,8 @@ namespace Planetnineserver.Controllers
 
         // POST: api/Comment
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Comment>> PostComment([FromForm] Comment comment)
+        [HttpPost("{id}")]
+        public async Task<ActionResult<IEnumerable<Comment>>> PostComment(int id, [FromForm] Comment comment)
         {
             if (_context.Comment == null)
             {
@@ -132,11 +134,23 @@ namespace Planetnineserver.Controllers
 
             comment.UserId = Int32.Parse(HttpContext.Request.Cookies["user"]);
 
+            comment.PostId = id;
+
             _context.Comment.Add(comment);
 
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetComment", new { id = comment.CommentId }, comment);
+            return await _context.Comment.Select(x => new Comment()
+            {
+                CommentId = x.CommentId,
+                CommentValue = x.CommentValue,
+                DateCreated = x.DateCreated,
+                UserId = x.UserId,
+                MediaLink = x.MediaLink,
+                PostId = x.PostId,
+                Favorites = x.Favorites,
+                ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.MediaLink)
+            }).Where(c => c.PostId == id).ToListAsync();
         }
 
         // DELETE: api/Comment/5

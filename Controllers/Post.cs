@@ -75,6 +75,8 @@ namespace Planetnineserver.Controllers
                 PostValue = x.PostValue,
                 MediaLink = x.MediaLink,
                 UserId = x.UserId,
+                Comments = x.Comments,
+                Favorites = x.Favorites,
                 DateCreated = x.DateCreated,
                 ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.MediaLink)
             }).ToListAsync();
@@ -94,6 +96,8 @@ namespace Planetnineserver.Controllers
                 PostValue = x.PostValue,
                 MediaLink = x.MediaLink,
                 UserId = x.UserId,
+                Comments = x.Comments,
+                Favorites = x.Favorites,
                 DateCreated = x.DateCreated,
                 ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.MediaLink)
             }).ToListAsync();
@@ -133,7 +137,7 @@ namespace Planetnineserver.Controllers
         // POST: api/Post
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Post>> PostPost([FromForm] Post post)
+        public async Task<ActionResult<IEnumerable<Post>>> PostPost([FromForm] Post post)
         {
             if (_context.Post == null)
             {
@@ -151,12 +155,22 @@ namespace Planetnineserver.Controllers
 
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPost", new { id = post.PostId }, post);
+            return await _context.Post.Where(p => p.UserId == post.UserId).Select(x => new Post()
+            {
+                PostId = x.PostId,
+                PostValue = x.PostValue,
+                MediaLink = x.MediaLink,
+                UserId = x.UserId,
+                Comments = x.Comments,
+                Favorites = x.Favorites,
+                DateCreated = x.DateCreated,
+                ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.MediaLink)
+            }).ToListAsync();
         }
 
         // DELETE: api/Post/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePost(int? id)
+        public async Task<ActionResult<IEnumerable<Post>>> DeletePost(int? id)
         {
             if (_context.Post == null)
             {
@@ -171,7 +185,9 @@ namespace Planetnineserver.Controllers
             _context.Post.Remove(post);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            var userId = Int32.Parse(HttpContext.Request.Cookies["user"]);
+
+            return await _context.Post.Where(c => c.UserId == userId).ToListAsync();
         }
 
         private bool PostExists(int? id)

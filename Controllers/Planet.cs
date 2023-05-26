@@ -42,6 +42,7 @@ namespace Planetnineserver.Controllers
                 Aphelion = x.Aphelion,
                 Gravity = x.Gravity,
                 UserId = x.UserId,
+                Favorites = x.Favorites,
                 ImageLink = x.ImageLink,
                 Temperature = x.Temperature,
                 ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
@@ -88,6 +89,7 @@ namespace Planetnineserver.Controllers
                 Aphelion = x.Aphelion,
                 Gravity = x.Gravity,
                 UserId = x.UserId,
+                Favorites = x.Favorites,
                 ImageLink = x.ImageLink,
                 Temperature = x.Temperature,
                 ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
@@ -111,6 +113,7 @@ namespace Planetnineserver.Controllers
                 Aphelion = x.Aphelion,
                 Gravity = x.Gravity,
                 UserId = x.UserId,
+                Favorites = x.Favorites,
                 ImageLink = x.ImageLink,
                 Temperature = x.Temperature,
                 ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
@@ -151,7 +154,7 @@ namespace Planetnineserver.Controllers
         // POST: api/planet
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Planet>> PostPlanet([FromForm] Planet planet)
+        public async Task<ActionResult<IEnumerable<Planet>>> PostPlanet(int planetId, [FromForm] Planet planet)
         {
           if (_context.Planet == null)
           {
@@ -166,14 +169,28 @@ namespace Planetnineserver.Controllers
             planet.UserId = Int32.Parse(HttpContext.Request.Cookies["user"]);
 
             _context.Planet.Add(planet);
+
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPlanet", new { id = planet.PlanetId }, planet);
+            return await _context.Planet.Where(p => p.UserId == planet.UserId).Select(x => new Planet()
+            {
+                PlanetId = x.PlanetId,
+                PlanetName = x.PlanetName,
+                PlanetMass = x.PlanetMass,
+                Perihelion = x.Perihelion,
+                Aphelion = x.Aphelion,
+                Gravity = x.Gravity,
+                UserId = x.UserId,
+                Favorites = x.Favorites,
+                ImageLink = x.ImageLink,
+                Temperature = x.Temperature,
+                ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
+            }).ToListAsync();
         }
 
         // DELETE: api/planet/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePlanet(int id)
+        public async Task<ActionResult<IEnumerable<Planet>>> DeletePlanet(int id)
         {
             if (_context.Planet == null)
             {
@@ -188,7 +205,22 @@ namespace Planetnineserver.Controllers
             _context.Planet.Remove(planet);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            var userId = Int32.Parse(HttpContext.Request.Cookies["user"]);
+
+            return await _context.Planet.Where(p => p.UserId == userId).Select(x => new Planet()
+            {
+                PlanetId = x.PlanetId,
+                PlanetName = x.PlanetName,
+                PlanetMass = x.PlanetMass,
+                Perihelion = x.Perihelion,
+                Aphelion = x.Aphelion,
+                Gravity = x.Gravity,
+                UserId = x.UserId,
+                Favorites = x.Favorites,
+                ImageLink = x.ImageLink,
+                Temperature = x.Temperature,
+                ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
+            }).ToListAsync();
         }
 
         private bool PlanetExists(int id)

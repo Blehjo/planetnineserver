@@ -33,6 +33,7 @@ namespace Planetnineserver.Controllers
                 ChatValue = x.ChatValue,
                 MediaLink = x.MediaLink,
                 DateCreated = x.DateCreated,
+                Favorites = x.Favorites,
                 ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ChatValue)
             }).ToListAsync();
         }
@@ -51,6 +52,7 @@ namespace Planetnineserver.Controllers
                 ChatValue = x.ChatValue,
                 MediaLink = x.MediaLink,
                 DateCreated = x.DateCreated,
+                Favorites = x.Favorites,
                 ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ChatValue)
             }).ToListAsync();
         }

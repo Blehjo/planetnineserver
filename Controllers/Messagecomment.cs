@@ -31,6 +31,7 @@ namespace Planetnineserver.Controllers
                 MessageValue = x.MessageValue,
                 DateCreated = x.DateCreated,
                 MediaLink = x.MediaLink,
+                Favorites = x.Favorites,
                 ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.MediaLink)}).ToListAsync();
         }
 
@@ -58,6 +59,7 @@ namespace Planetnineserver.Controllers
                 MessageValue = x.MessageValue,
                 DateCreated = x.DateCreated,
                 MediaLink = x.MediaLink,
+                Favorites = x.Favorites,
                 ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.MediaLink)
             }).ToListAsync();
         }
