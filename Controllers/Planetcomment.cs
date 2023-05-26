@@ -119,8 +119,8 @@ namespace Planetnineserver.Controllers
 
         // POST: api/Comment
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<PlanetComment>> PostComment([FromForm] PlanetComment planetcomment)
+        [HttpPost("{id}")]
+        public async Task<ActionResult<IEnumerable<PlanetComment>>> PostComment(int id, [FromForm] PlanetComment planetcomment)
         {
             if (_context.PlanetComment == null)
             {
@@ -134,11 +134,22 @@ namespace Planetnineserver.Controllers
 
             planetcomment.UserId = Int32.Parse(HttpContext.Request.Cookies["user"]);
 
+            planetcomment.PlanetId = id;
+
             _context.PlanetComment.Add(planetcomment);
 
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetComment", new { id = planetcomment.PlanetCommentId }, planetcomment);
+            return await _context.PlanetComment.Select(x => new PlanetComment()
+            {
+                PlanetCommentId = x.PlanetCommentId,
+                CommentValue = x.CommentValue,
+                DateCreated = x.DateCreated,
+                UserId = x.UserId,
+                MediaLink = x.MediaLink,
+                PlanetId = x.PlanetId,
+                ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.MediaLink)
+            }).Where(c => c.PlanetId == id).ToListAsync();
         }
 
         // DELETE: api/Comment/5
