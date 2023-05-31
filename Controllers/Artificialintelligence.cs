@@ -137,7 +137,7 @@ namespace Planetnineserver.Controllers
         // POST: api/User
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<ArtificialIntelligence>> PostArtificialIntelligence([FromForm] ArtificialIntelligence artificialIntelligence)
+        public async Task<ActionResult<IEnumerable<ArtificialIntelligence>>> PostArtificialIntelligence([FromForm] ArtificialIntelligence artificialIntelligence)
         {
             if (_context.ArtificialIntelligences == null)
             {
@@ -155,8 +155,16 @@ namespace Planetnineserver.Controllers
 
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetArtificialIntelligence", new { id = artificialIntelligence.ArtificialIntelligenceId }, artificialIntelligence);
+            return await _context.ArtificialIntelligences.Where(p => p.UserId == artificialIntelligence.UserId).Select(x => new ArtificialIntelligence()
+            {
+                ArtificialIntelligenceId = x.ArtificialIntelligenceId,
+                Name = x.Name,
+                Role = x.Role,
+                ImageLink = x.ImageLink,
+                ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
+            }).ToListAsync();
         }
+    
 
         // DELETE: api/User/5
         [HttpDelete("{id}")]
