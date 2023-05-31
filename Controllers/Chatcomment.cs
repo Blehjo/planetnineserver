@@ -30,6 +30,28 @@ namespace Planetnineserver.Controllers
             return await _context.ChatComments.Where(c => c.ChatId == id).Select(x => new ChatComment()
             {
                 ChatCommentId = x.ChatCommentId,
+                ChatId = x.ChatId,
+                ChatValue = x.ChatValue,
+                MediaLink = x.MediaLink,
+                DateCreated = x.DateCreated,
+                Favorites = x.Favorites,
+                ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ChatValue)
+            }).ToListAsync();
+        }
+
+        // GET: api/ChatComment
+        [HttpGet("chat/{id}")]
+        public async Task<ActionResult<IEnumerable<ChatComment>>> GetChatChatComments(int id)
+        {
+            if (_context.ChatComments == null)
+            {
+                return NotFound();
+            }
+
+            return await _context.ChatComments.Where(c => c.ChatId == id).Select(x => new ChatComment()
+            {
+                ChatCommentId = x.ChatCommentId,
+                ChatId = x.ChatId,
                 ChatValue = x.ChatValue,
                 MediaLink = x.MediaLink,
                 DateCreated = x.DateCreated,
@@ -49,6 +71,7 @@ namespace Planetnineserver.Controllers
             return await _context.ChatComments.Select(x => new ChatComment()
             {
                 ChatCommentId = x.ChatCommentId,
+                ChatId = x.ChatId,
                 ChatValue = x.ChatValue,
                 MediaLink = x.MediaLink,
                 DateCreated = x.DateCreated,
@@ -109,7 +132,7 @@ namespace Planetnineserver.Controllers
         // POST: api/ChatComment
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost("{id}")]
-        public async Task<ActionResult<ChatComment>> PostChatComment(int id, [FromForm] ChatComment chatComment)
+        public async Task<ActionResult<IEnumerable<ChatComment>>> PostChatComment(int id, [FromForm] ChatComment chatComment)
         {
             if (_context.ChatComments == null)
             {
@@ -127,7 +150,16 @@ namespace Planetnineserver.Controllers
 
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetChatComment", new { id = chatComment.ChatCommentId }, chatComment);
+            return await _context.ChatComments.Where(c => c.ChatId == id).Select(x => new ChatComment()
+            {
+                ChatCommentId = x.ChatCommentId,
+                ChatId = x.ChatId,
+                ChatValue = x.ChatValue,
+                MediaLink = x.MediaLink,
+                DateCreated = x.DateCreated,
+                Favorites = x.Favorites,
+                ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ChatValue)
+            }).ToListAsync();
         }
 
         // DELETE: api/ChatComment/5
