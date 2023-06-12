@@ -2,21 +2,25 @@
 
 namespace Planetnineserver.Models
 {
-	public class Moon
-	{
-		public int MoonId { get; set; }
-        
-        public string MoonName { get; set; }
+    public class Moon
+    {
+        public int MoonId { get; set; }
 
-        public string MoonMass { get; set; }
+        public string? MoonName { get; set; }
 
-        public string Perihelion { get; set; }
+        public string? MoonMass { get; set; }
 
-        public string Aphelion { get; set; }
+        public string? Perihelion { get; set; }
 
-        public string Gravity { get; set; }
+        public string? Aphelion { get; set; }
 
-        public string Temperature { get; set; }
+        public string? Gravity { get; set; }
+
+        public string? Temperature { get; set; }
+
+        public string? Description { get; set; }
+
+        public string? ModelLink { get; set; }
 
         public string Type { get; set; } = "moon";
 
