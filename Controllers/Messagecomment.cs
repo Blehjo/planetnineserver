@@ -44,20 +44,16 @@ namespace Planetnineserver.Controllers
                 return NotFound();
             }
 
-            var messageComment = await _context.MessageComment.FindAsync(id);
-
-            if (messageComment == null)
-            {
-                return NotFound();
-            }
-
             return await _context.MessageComment.Where(m => m.MessageId == id).Select(x => new MessageComment()
             {
                 MessageCommentId = x.MessageCommentId,
+                MessageId = x.MessageId,
                 MessageValue = x.MessageValue,
                 DateCreated = x.DateCreated,
                 MediaLink = x.MediaLink,
                 Favorites = x.Favorites,
+                UserId = x.UserId,
+                User = x.User,
                 ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.MediaLink)
             }).ToListAsync();
         }
@@ -100,7 +96,7 @@ namespace Planetnineserver.Controllers
         {
             messageComment.MessageId = id;
 
-            var userId = Int32.Parse(Request.Cookies["user"]);
+            messageComment.UserId = Int32.Parse(Request.Cookies["user"]);
 
             if (_context.MessageComment == null)
             {
@@ -116,7 +112,7 @@ namespace Planetnineserver.Controllers
             
             await _context.SaveChangesAsync();
 
-            return await _context.MessageComment.Where(m => m.UserId == userId).Select(x => new MessageComment()
+            return await _context.MessageComment.Where(m => m.UserId == messageComment.UserId).Select(x => new MessageComment()
             {
                 MessageCommentId = x.MessageCommentId,
                 MessageId = x.MessageId,

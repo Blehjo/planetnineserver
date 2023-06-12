@@ -86,17 +86,13 @@ namespace Planetnineserver.Controllers
 
             if (local != null)
             {
-                // detach
                 _context.Entry(local).State = EntityState.Detached;
             }
-
-            //var existingUser = _context.User.Local.SingleOrDefault(u => u.UserId == user.UserId);
 
             if (id != user.UserId)
             {
                 return BadRequest();
             }
-            //var existingUser = _context.User.FindAsync(id);
 
             _context.Entry(user).State = EntityState.Modified;
 
@@ -104,40 +100,6 @@ namespace Planetnineserver.Controllers
             {
                 user.ImageLink = await SaveImage(user.ImageFile);
             }
-
-
-            //var planet = _context.Planet.Local.SingleOrDefault(p => p.UserId == user.UserId);
-            //if (planet != null)
-            //    planet.User = user;
-            //else
-            //    _context.Attach(planet.User);
-
-            //var post = _context.Post.Local.SingleOrDefault(p => p.UserId == user.UserId);
-            //if (post != null)
-            //    post.User = user;
-            //else
-            //    _context.Attach(post.User);
-
-            //var moon = _context.Moon.Local.SingleOrDefault(m => m.UserId == user.UserId);
-            //if (moon != null)
-            //    moon.User = user;
-            //else
-            //    _context.Attach(moon.User);
-
-            //var follower = _context.Follower.Local.SingleOrDefault(f => f.UserId == user.UserId);
-            //if (follower != null)
-            //    follower.User = user;
-            //else
-            //    _context.Attach(follower.User);
-
-            //var favorite = _context.Favorite.Local.SingleOrDefault(f => f.UserId == user.UserId);
-            //if (favorite != null)
-            //    favorite.User = user;
-            //else
-            //    _context.Attach(post.User);
-
-            //_context.User.Update(user);
-
 
             try
             {

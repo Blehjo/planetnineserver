@@ -121,12 +121,15 @@ namespace Planetnineserver.Controllers
         [HttpPost]
         public async Task<ActionResult<Chat>> PostChat(Chat chat)
         {
-          if (_context.Chats == null)
-          {
-              return Problem("Entity set 'PlanetNineDatabaseContext.Chats'  is null.");
-          }
+            if (_context.Chats == null)
+            {
+                return Problem("Entity set 'PlanetNineDatabaseContext.Chats'  is null.");
+            }
+
             chat.UserId = Int32.Parse(HttpContext.Request.Cookies["user"]);
+
             _context.Chats.Add(chat);
+
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetChat", new { id = chat.ChatId }, chat);
