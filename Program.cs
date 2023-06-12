@@ -1,6 +1,8 @@
 using Planetnineserver.Data;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OpenAI.GPT3.Extensions;
+using Planetnineserver.Controllers;
 using Planetnineserver.Services;
 using Planetnineserver.Helpers;
 using Planetnineserver.Authorization;
@@ -23,6 +25,7 @@ var builder = WebApplication.CreateBuilder(args);
     services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 
     // configure DI for application services
+    services.AddScoped<ControllerBase, UserController>();
     services.AddScoped<IJwtUtils, JwtUtils>();
     services.AddScoped<IUserService, UserService>();
 }

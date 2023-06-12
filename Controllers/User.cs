@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Planetnineserver.Data;
@@ -35,7 +36,7 @@ namespace Planetnineserver.Controllers
                 About = x.About,
                 ImageLink = x.ImageLink,
                 ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
-            }).ToListAsync();
+            }).AsNoTracking().ToListAsync();
         }
 
         // GET: api/User/5
@@ -55,20 +56,88 @@ namespace Planetnineserver.Controllers
 
             user.ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, user.ImageLink);
 
-            return user;
+            //return user;
+            return new User()
+            {
+                UserId = user.UserId,
+                Username = user.Username,
+                FirstName = user.FirstName,
+                About = user.About,
+                ImageLink = user.ImageLink,
+                Favorites = user.Favorites,
+                Planets = user.Planets,
+                Moons = user.Moons,
+                Posts = user.Posts,
+                Followers = user.Followers,
+                ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, user.ImageLink)
+            };
         }
 
         // PUT: api/User/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, User user)
+        public async Task<IActionResult> PutUser(int id, [FromForm] User user)
         {
+            user.UserId = id;
+
+            var local = _context.Set<User>()
+                .Local
+                .FirstOrDefault(entry => entry.UserId.Equals(id));
+
+            if (local != null)
+            {
+                // detach
+                _context.Entry(local).State = EntityState.Detached;
+            }
+
+            //var existingUser = _context.User.Local.SingleOrDefault(u => u.UserId == user.UserId);
+
             if (id != user.UserId)
             {
                 return BadRequest();
             }
+            //var existingUser = _context.User.FindAsync(id);
 
             _context.Entry(user).State = EntityState.Modified;
+
+            if (user.ImageFile != null)
+            {
+                user.ImageLink = await SaveImage(user.ImageFile);
+            }
+
+
+            //var planet = _context.Planet.Local.SingleOrDefault(p => p.UserId == user.UserId);
+            //if (planet != null)
+            //    planet.User = user;
+            //else
+            //    _context.Attach(planet.User);
+
+            //var post = _context.Post.Local.SingleOrDefault(p => p.UserId == user.UserId);
+            //if (post != null)
+            //    post.User = user;
+            //else
+            //    _context.Attach(post.User);
+
+            //var moon = _context.Moon.Local.SingleOrDefault(m => m.UserId == user.UserId);
+            //if (moon != null)
+            //    moon.User = user;
+            //else
+            //    _context.Attach(moon.User);
+
+            //var follower = _context.Follower.Local.SingleOrDefault(f => f.UserId == user.UserId);
+            //if (follower != null)
+            //    follower.User = user;
+            //else
+            //    _context.Attach(follower.User);
+
+            //var favorite = _context.Favorite.Local.SingleOrDefault(f => f.UserId == user.UserId);
+            //if (favorite != null)
+            //    favorite.User = user;
+            //else
+            //    _context.Attach(post.User);
+
+            //_context.User.Update(user);
+
 
             try
             {

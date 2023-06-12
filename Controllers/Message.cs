@@ -98,14 +98,16 @@ namespace Planetnineserver.Controllers
             var userId = Int32.Parse(Request.Cookies["user"]);
 
             var returnedMessage = _context.Message.Where(m => m.MessageValue == message.MessageValue && m.UserId == userId);
-
+            
             if (returnedMessage.Count() > 0)
             {
                 return CreatedAtAction("GetMessage", returnedMessage);
             }
 
             message.UserId = userId;
+
             _context.Message.Add(message);
+
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetMessage", new { id = message.MessageId }, message);
@@ -119,7 +121,9 @@ namespace Planetnineserver.Controllers
             {
                 return NotFound();
             }
+
             var message = await _context.Message.FindAsync(id);
+
             if (message == null)
             {
                 return NotFound();

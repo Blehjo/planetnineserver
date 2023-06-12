@@ -43,7 +43,15 @@ namespace Planetnineserver.Controllers
 
             var userId = Int32.Parse(HttpContext.Request.Cookies["user"]);
 
-            return await _context.Favorite.Where(f => f.UserId == userId).ToListAsync();
+            return await _context.Favorite.Where(f => f.UserId == userId).Select(x => new Favorite()
+            {
+                FavoriteId = x.FavoriteId,
+                ContentId = x.ContentId,
+                UserId = x.UserId,
+                User = x.User,
+                ContentType = x.ContentType,
+                DateCreated = x.DateCreated
+            }).ToListAsync();
         }
 
 

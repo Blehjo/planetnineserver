@@ -68,7 +68,10 @@ namespace Planetnineserver.Controllers
             {
                 return NotFound();
             }
-            return await _context.ChatComments.Select(x => new ChatComment()
+
+            var userId = Int32.Parse(HttpContext.Request.Cookies["user"]);
+
+            return await _context.ChatComments.Where(c => c.Chat.UserId == userId).Select(x => new ChatComment()
             {
                 ChatCommentId = x.ChatCommentId,
                 ChatId = x.ChatId,

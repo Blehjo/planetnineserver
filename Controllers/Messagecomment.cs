@@ -22,17 +22,17 @@ namespace Planetnineserver.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MessageComment>>> GetMessageComments()
         {
-          if (_context.MessageComment == null)
-          {
-              return NotFound();
-          }
+            if (_context.MessageComment == null)
+            {
+                return NotFound();
+            }
             return await _context.MessageComment.Select(x => new MessageComment() {
                 MessageCommentId = x.MessageCommentId,
                 MessageValue = x.MessageValue,
                 DateCreated = x.DateCreated,
                 MediaLink = x.MediaLink,
                 Favorites = x.Favorites,
-                ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.MediaLink)}).ToListAsync();
+                ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.MediaLink) }).ToListAsync();
         }
 
         // GET: api/MessageComment/5
@@ -50,8 +50,6 @@ namespace Planetnineserver.Controllers
             {
                 return NotFound();
             }
-
-            messageComment.ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, messageComment.MediaLink);
 
             return await _context.MessageComment.Where(m => m.MessageId == id).Select(x => new MessageComment()
             {
@@ -97,9 +95,13 @@ namespace Planetnineserver.Controllers
 
         // POST: api/MessageComment
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<MessageComment>> PostMessageComment([FromForm] MessageComment messageComment)
+        [HttpPost("{id}")]
+        public async Task<ActionResult<IEnumerable<MessageComment>>> PostMessageComment(int id, [FromForm] MessageComment messageComment)
         {
+            messageComment.MessageId = id;
+
+            var userId = Int32.Parse(Request.Cookies["user"]);
+
             if (_context.MessageComment == null)
             {
                 return Problem("Entity set 'Planetnineservercontext.MessageComment'  is null.");
@@ -114,7 +116,17 @@ namespace Planetnineserver.Controllers
             
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetMessageComment", new { id = messageComment.MessageCommentId }, messageComment);
+            return await _context.MessageComment.Where(m => m.UserId == userId).Select(x => new MessageComment()
+            {
+                MessageCommentId = x.MessageCommentId,
+                MessageId = x.MessageId,
+                MediaLink = x.MediaLink,
+                ImageSource = x.ImageSource,
+                Favorites =x.Favorites,
+                MessageValue = x.MessageValue,
+                DateCreated = x.DateCreated,
+                UserId = x.UserId
+            }).ToListAsync();
         }
 
         // DELETE: api/MessageComment/5
