@@ -8,8 +8,8 @@ namespace Planetnineserver.Data
         public Planetnineservercontext (DbContextOptions<Planetnineservercontext> options)
             : base(options)
         {
-            Database.EnsureCreated();
-            Database.GetMigrations();
+            //Database.EnsureCreated();
+            //Database.GetMigrations();
         }
 
         public DbSet<Planetnineserver.Models.User> User { get; set; } = default!;

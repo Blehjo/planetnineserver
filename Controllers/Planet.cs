@@ -45,6 +45,8 @@ namespace Planetnineserver.Controllers
                 Favorites = x.Favorites,
                 ImageLink = x.ImageLink,
                 Temperature = x.Temperature,
+                Description = x.Description,
+                ModelLink = x.ModelLink,
                 ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
             }).ToListAsync();
         }

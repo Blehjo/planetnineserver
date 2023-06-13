@@ -7,7 +7,7 @@ using Planetnineserver.Data;
 
 #nullable disable
 
-namespace Planetnineserver.Migrations
+namespace K.Migrations
 {
     [DbContext(typeof(Planetnineservercontext))]
     partial class PlanetnineservercontextModelSnapshot : ModelSnapshot
@@ -15,7 +15,7 @@ namespace Planetnineserver.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
+            modelBuilder.HasAnnotation("ProductVersion", "7.0.2");
 
             modelBuilder.Entity("Planetnineserver.Models.ArtificialIntelligence", b =>
                 {
@@ -310,34 +310,33 @@ namespace Planetnineserver.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Aphelion")
-                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Gravity")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ImageLink")
-                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ModelLink")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("MoonMass")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("MoonName")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Perihelion")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("PlanetId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Temperature")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Type")
@@ -2740,10 +2739,19 @@ namespace Planetnineserver.Migrations
                     b.Property<string>("Aphelion")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Brief")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Gravity")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ImageLink")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ModelLink")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Perihelion")
@@ -2776,8 +2784,11 @@ namespace Planetnineserver.Migrations
                         {
                             PlanetId = 2,
                             Aphelion = "69816900",
+                            Brief = "From the surface of Mercury, the Sun would appear more than three times as large as it does when viewed from Earth, and the sunlight would be as much as 11 times brighter.",
+                            Description = "The smallest planet in our solar system and nearest to the Sun, Mercury is only slightly larger than Earth's Moon. From the surface of Mercury, the Sun would appear more than three times as large as it does when viewed from Earth, and the sunlight would be as much as seven times brighter. Despite its proximity to the Sun, Mercury is not the hottest planet in our solar system – that title belongs to nearby Venus, thanks to its dense atmosphere. Because of Mercury's elliptical – egg-shaped – orbit, and sluggish rotation, the Sun appears to rise briefly, set, and rise again from some parts of the planet's surface. The same thing happens in reverse at sunset.",
                             Gravity = "3.7",
                             ImageLink = "https://solarsystem.nasa.gov/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0VRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b43e79a5b43d2063c4866ccff66bede5faff17b8/mercury_th.jpg",
+                            ModelLink = "https://solarsystem.nasa.gov/gltf_embed/2369",
                             Perihelion = "46001200",
                             PlanetMass = "3.30114",
                             PlanetName = "Mercury",
@@ -2789,8 +2800,11 @@ namespace Planetnineserver.Migrations
                         {
                             PlanetId = 3,
                             Aphelion = "108939000",
+                            Brief = "Similar in structure and size to Earth, Venus's thick atmosphere traps heat in a runaway greenhouse effect, making it the hottest planet in our solar system.",
+                            Description = "Venus is the second planet from the Sun and is Earth’s closest planetary neighbor. It’s one of the four inner, terrestrial (or rocky) planets, and it’s often called Earth’s twin because it’s similar in size and density. These are not identical twins, however – there are radical differences between the two worlds. Venus has a thick, toxic atmosphere filled with carbon dioxide and it’s perpetually shrouded in thick, yellowish clouds of sulfuric acid that trap heat, causing a runaway greenhouse effect. It’s the hottest planet in our solar system, even though Mercury is closer to the Sun. Surface temperatures on Venus are about 900 degrees Fahrenheit (475 degrees Celsius) – hot enough to melt lead. The surface is a rusty color and it’s peppered with intensely crunched mountains and thousands of large volcanoes. Scientists think it’s possible some volcanoes are still active. Another big difference from Earth – Venus rotates on its axis backward, compared to most of the other planets in the solar system. This means that, on Venus, the Sun rises in the west and sets in the east, opposite to what we experience on Earth. (It’s not the only planet in our solar system with such an oddball rotation – Uranus spins on its side.)",
                             Gravity = "8.87",
                             ImageLink = "https://solarsystem.nasa.gov/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajl5IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1771be6bd46710c30aa93cd6c3ababe23ad52681/480x320_venus.png?disposition=inline",
+                            ModelLink = "https://solarsystem.nasa.gov/gltf_embed/2343",
                             Perihelion = "107477000",
                             PlanetMass = "4.86747",
                             PlanetName = "Venus",
@@ -2802,8 +2816,11 @@ namespace Planetnineserver.Migrations
                         {
                             PlanetId = 4,
                             Aphelion = "152100000",
+                            Brief = "Earth—our home planet—is the only place we know of so far that’s inhabited by living things. It's also the only planet in our solar system with liquid water on the surface.",
+                            Description = "Our home planet is the third planet from the Sun, and the only place we know of so far that’s inhabited by living things. While Earth is only the fifth largest planet in the solar system, it is the only world in our solar system with liquid water on the surface. Just slightly larger than nearby Venus, Earth is the biggest of the four planets closest to the Sun, all of which are made of rock and metal. Earth is the only planet in the Solar System whose English name does not come from Greek or Roman mythology. The name was taken from Old English and Germanic. It simply means the ground. There are, of course, many names for our planet in the thousands of languages spoken by the people of the third planet from the Sun.",
                             Gravity = "9.8",
                             ImageLink = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Earth_from_Space.jpg/2048px-Earth_from_Space.jpg",
+                            ModelLink = "https://solarsystem.nasa.gov/gltf_embed/2393",
                             Perihelion = "147095000",
                             PlanetMass = "5.97237",
                             PlanetName = "Earth",
@@ -2815,8 +2832,11 @@ namespace Planetnineserver.Migrations
                         {
                             PlanetId = 5,
                             Aphelion = "249200000",
+                            Brief = "Mars is a dusty, cold, desert world with a very thin atmosphere. There is strong evidence Mars was – billions of years ago – wetter and warmer, with a thicker atmosphere.",
+                            Description = "​Mars is the fourth planet from the Sun – a dusty, cold, desert world with a very thin atmosphere. Mars is also a dynamic planet with seasons, polar ice caps, canyons, extinct volcanoes, and evidence that it was even more active in the past. Mars is one of the most explored bodies in our solar system, and it's the only planet where we've sent rovers to roam the alien landscape. NASA currently has two rovers (Curiosity and Perseverance), one lander (InSight), and one helicopter (Ingenuity) exploring the surface of Mars.",
                             Gravity = "3.7",
                             ImageLink = "https://solarsystem.nasa.gov/system/stellar_items/image_files/6_mars.jpg",
+                            ModelLink = "https://solarsystem.nasa.gov/gltf_embed/2372",
                             Perihelion = "206700000",
                             PlanetMass = "3.71",
                             PlanetName = "Mars",
@@ -2828,8 +2848,11 @@ namespace Planetnineserver.Migrations
                         {
                             PlanetId = 6,
                             Aphelion = "816620000",
+                            Brief = "Jupiter is more than twice as massive than the other planets of our solar system combined. The giant planet's Great Red Spot is a centuries-old storm bigger than Earth.",
+                            Description = "Jupiter has a long history of surprising scientists – all the way back to 1610 when Galileo Galilei found the first moons beyond Earth. That discovery changed the way we see the universe. Jupiter's familiar stripes and swirls are actually cold, windy clouds of ammonia and water, floating in an atmosphere of hydrogen and helium. Jupiter’s iconic Great Red Spot is a giant storm bigger than Earth that has raged for hundreds of years",
                             Gravity = "24.79",
                             ImageLink = "https://solarsystem.nasa.gov/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGxyIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--229ba26c079b7122001319d5dcffec49c8d4e0cb/STSCI-H-p1936a-f-640.jpg?disposition=attachment",
+                            ModelLink = "https://solarsystem.nasa.gov/gltf_embed/2375",
                             Perihelion = "740379835",
                             PlanetMass = "1.89819",
                             PlanetName = "Jupiter",
@@ -2841,8 +2864,11 @@ namespace Planetnineserver.Migrations
                         {
                             PlanetId = 7,
                             Aphelion = "1503509229",
+                            Brief = "Adorned with a dazzling, complex system of icy rings, Saturn is unique in our solar system. The other giant planets have rings, but none are as spectacular as Saturn's.",
+                            Description = "Saturn is the sixth planet from the Sun and the second-largest planet in our solar system. Adorned with thousands of beautiful ringlets, Saturn is unique among the planets. It is not the only planet to have rings – made of chunks of ice and rock – but none are as spectacular or as complicated as Saturn's. Like fellow gas giant Jupiter, Saturn is a massive ball made mostly of hydrogen and helium.",
                             Gravity = "10.44",
                             ImageLink = "https://solarsystem.nasa.gov/system/stellar_items/image_files/38_saturn_1600x900.jpg",
+                            ModelLink = "https://solarsystem.nasa.gov/gltf_embed/2355",
                             Perihelion = "1349823615",
                             PlanetMass = "5.68336",
                             PlanetName = "Saturn",
@@ -2854,8 +2880,11 @@ namespace Planetnineserver.Migrations
                         {
                             PlanetId = 8,
                             Aphelion = "3006318143",
+                            Brief = "Uranus—seventh planet from the Sun—rotates at a nearly 90-degree angle from the plane of its orbit. This unique tilt makes Uranus appear to spin on its side.",
+                            Description = "Uranus is the seventh planet from the Sun, and has the third-largest diameter in our solar system. It was the first planet found with the aid of a telescope, Uranus was discovered in 1781 by astronomer William Herschel, although he originally thought it was either a comet or a star. It was two years later that the object was universally accepted as a new planet, in part because of observations by astronomer Johann Elert Bode. Herschel tried unsuccessfully to name his discovery Georgium Sidus after King George III. Instead, the scientific community accepted Bode's suggestion to name it Uranus, the Greek god of the sky, as suggested by Bode.​",
                             Gravity = "8.87",
                             ImageLink = "https://images.english.elpais.com/resizer/BH_KvY_lAzwSrpp8v7D55nGax8A=/1960x1470/filters:focal(2464x2210:2474x2220)/cloudfront-eu-central-1.images.arcpublishing.com/prisa/WQ773ELGFRDOHJ46MOLRXKJ7AY.jpg",
+                            ModelLink = "https://solarsystem.nasa.gov/gltf_embed/2344&",
                             Perihelion = "2734998229",
                             PlanetMass = "8.68127",
                             PlanetName = "Uranus",
@@ -2867,8 +2896,11 @@ namespace Planetnineserver.Migrations
                         {
                             PlanetId = 9,
                             Aphelion = "4537039826",
+                            Brief = "Neptune—the eighth and most distant major planet orbiting our Sun—is dark, cold and whipped by supersonic winds. It was the first planet located through mathematical calculations.",
+                            Description = "Dark, cold, and whipped by supersonic winds, ice giant Neptune is the eighth and most distant planet in our solar system. More than 30 times as far from the Sun as Earth, Neptune is the only planet in our solar system not visible to the naked eye and the first predicted by mathematics before its discovery. In 2011 Neptune completed its first 165-year orbit since its discovery in 1846. NASA's Voyager 2 is the only spacecraft to have visited Neptune up close. It flew past in 1989 on its way out of the solar system.",
                             Gravity = "11.15",
                             ImageLink = "https://solarsystem.nasa.gov/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkp5IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cb7cb2868fd8b4892788893961c20975baffeb52/neptune_480x320.jpg?disposition=inline",
+                            ModelLink = "https://solarsystem.nasa.gov/gltf_embed/2364",
                             Perihelion = "4459753056",
                             PlanetMass = "1.02413",
                             PlanetName = "Neptune",
@@ -2984,7 +3016,7 @@ namespace Planetnineserver.Migrations
                         {
                             UserId = 1,
                             About = "cyberpunk",
-                            DateCreated = new DateTime(2023, 5, 10, 14, 50, 49, 292, DateTimeKind.Utc).AddTicks(1220),
+                            DateCreated = new DateTime(2023, 6, 12, 21, 36, 26, 206, DateTimeKind.Utc).AddTicks(5000),
                             DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EmailAddress = "spacemarauder@email.com",
                             FirstName = "malorian",

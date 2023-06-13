@@ -20,7 +20,7 @@
     "https": {
       "commandName": "Project",
       "launchUrl": "swagger",
-      "applicationUrl": "https://planetnineservers.azurewebsites.net;http://localhost:5053",
+      "applicationUrl": "https://planetnineserver.azurewebsites.net;http://localhost:5053",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
