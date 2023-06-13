@@ -25,11 +25,25 @@ namespace Planetnineserver.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Chat>>> GetChats()
         {
-          if (_context.Chats == null)
-          {
-              return NotFound();
-          }
-            return await _context.Chats.ToListAsync();
+            if (_context.Chats == null)
+            {
+                return NotFound();
+            }
+
+            return await _context.Chats.Select(x => new Chat()
+            {
+                ChatId = x.ChatId,
+                Title = x.Title,
+                Type = x.Type,
+                DateCreated = x.DateCreated,
+                UserId = x.UserId,
+                User = x.User,
+                ArtificialId = x.ArtificialId,
+                ArtificialIntelligence = x.ArtificialIntelligence,
+                ChatComments = x.ChatComments,
+                Comments = x.Comments,
+                Favorites = x.Favorites
+            }).ToListAsync();
         }
 
         [HttpGet("user")]
@@ -40,7 +54,20 @@ namespace Planetnineserver.Controllers
                 return NotFound();
             }
 
-            return await _context.Chats.ToListAsync();
+            return await _context.Chats.Select(x => new Chat()
+            {
+                ChatId = x.ChatId,
+                Title = x.Title,
+                Type = x.Type,
+                DateCreated = x.DateCreated,
+                UserId = x.UserId,
+                User = x.User,
+                ArtificialId = x.ArtificialId,
+                ArtificialIntelligence = x.ArtificialIntelligence,
+                ChatComments = x.ChatComments,
+                Comments = x.Comments,
+                Favorites = x.Favorites
+            }).ToListAsync();
         }
 
         [HttpGet("user/chats")]
@@ -53,7 +80,20 @@ namespace Planetnineserver.Controllers
 
             var userId = Int32.Parse(HttpContext.Request.Cookies["user"]);
 
-            return await _context.Chats.Where(c => c.UserId == userId).ToListAsync();
+            return await _context.Chats.Where(c => c.UserId == userId).Select(x => new Chat()
+            {
+                ChatId = x.ChatId,
+                Title = x.Title,
+                Type = x.Type,
+                DateCreated = x.DateCreated,
+                UserId = x.UserId,
+                User = x.User,
+                ArtificialId = x.ArtificialId,
+                ArtificialIntelligence = x.ArtificialIntelligence,
+                ChatComments = x.ChatComments,
+                Comments = x.Comments,
+                Favorites = x.Favorites
+            }).ToListAsync();
         }
 
         [HttpGet("user/{id}")]
@@ -64,7 +104,20 @@ namespace Planetnineserver.Controllers
                 return NotFound();
             }
 
-            return await _context.Chats.Where(c => c.UserId == id).ToListAsync();
+            return await _context.Chats.Where(c => c.UserId == id).Select(x => new Chat()
+            {
+                ChatId = x.ChatId,
+                Title = x.Title,
+                Type = x.Type,
+                DateCreated = x.DateCreated,
+                UserId = x.UserId,
+                User = x.User,
+                ArtificialId = x.ArtificialId,
+                ArtificialIntelligence = x.ArtificialIntelligence,
+                ChatComments = x.ChatComments,
+                Comments = x.Comments,
+                Favorites = x.Favorites
+            }).ToListAsync();
         }
 
         // GET: api/Chat/5
@@ -82,7 +135,20 @@ namespace Planetnineserver.Controllers
                 return NotFound();
             }
 
-            return chat;
+            return new Chat()
+            {
+                ChatId = chat.ChatId,
+                Title = chat.Title,
+                Type = chat.Type,
+                DateCreated = chat.DateCreated,
+                UserId = chat.UserId,
+                User = chat.User,
+                ArtificialId = chat.ArtificialId,
+                ArtificialIntelligence = chat.ArtificialIntelligence,
+                ChatComments = chat.ChatComments,
+                Comments = chat.Comments,
+                Favorites = chat.Favorites
+            };
         }
 
         // PUT: api/Chat/5

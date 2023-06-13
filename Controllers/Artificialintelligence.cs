@@ -33,6 +33,11 @@ namespace Planetnineserver.Controllers
                 Name = x.Name,
                 Role = x.Role,
                 ImageLink = x.ImageLink,
+                DateCreated = x.DateCreated,
+                UserId = x.UserId,
+                User = x.User,
+                Chats = x.Chats,
+                ChatComments = x.ChatComments,
                 ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
             }).ToListAsync();
         }
@@ -54,7 +59,19 @@ namespace Planetnineserver.Controllers
 
             artificialIntelligence.ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, artificialIntelligence.ImageLink);
 
-            return artificialIntelligence;
+            return new ArtificialIntelligence()
+            {
+                ArtificialIntelligenceId = artificialIntelligence.ArtificialIntelligenceId,
+                Name = artificialIntelligence.Name,
+                Role = artificialIntelligence.Role,
+                ImageLink = artificialIntelligence.ImageLink,
+                DateCreated = artificialIntelligence.DateCreated,
+                UserId = artificialIntelligence.UserId,
+                User = artificialIntelligence.User,
+                Chats = artificialIntelligence.Chats,
+                ChatComments = artificialIntelligence.ChatComments,
+                ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, artificialIntelligence.ImageLink)
+            };
         }
 
         // GET: api/ArtificialIntelligence/user
@@ -74,6 +91,11 @@ namespace Planetnineserver.Controllers
                 Name = x.Name,
                 Role = x.Role,
                 ImageLink = x.ImageLink,
+                DateCreated = x.DateCreated,
+                UserId = x.UserId,
+                User = x.User,
+                Chats = x.Chats,
+                ChatComments = x.ChatComments,
                 ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
             }).ToListAsync();
         }
@@ -99,6 +121,11 @@ namespace Planetnineserver.Controllers
                 Name = x.Name,
                 Role = x.Role,
                 ImageLink = x.ImageLink,
+                DateCreated = x.DateCreated,
+                UserId = x.UserId,
+                User = x.User,
+                Chats = x.Chats,
+                ChatComments = x.ChatComments,
                 ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
             }).ToListAsync();
         }
@@ -161,6 +188,11 @@ namespace Planetnineserver.Controllers
                 Name = x.Name,
                 Role = x.Role,
                 ImageLink = x.ImageLink,
+                DateCreated = x.DateCreated,
+                UserId = x.UserId,
+                User = x.User,
+                Chats = x.Chats,
+                ChatComments = x.ChatComments,
                 ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
             }).ToListAsync();
         }
