@@ -18,6 +18,8 @@ namespace Planetnineserver.Models
 
         public string? Temperature { get; set; }
 
+        public string? Brief { get; set; }
+
         public string? Description { get; set; }
 
         public string? ModelLink { get; set; }

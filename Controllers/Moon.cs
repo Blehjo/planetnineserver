@@ -73,6 +73,8 @@ namespace Planetnineserver.Controllers
                 Gravity = x.Gravity,
                 UserId = x.UserId,
                 Favorites = x.Favorites,
+                Description = x.Description,
+                ModelLink = x.ModelLink,
                 ImageLink = x.ImageLink,
                 Temperature = x.Temperature,
                 ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
@@ -98,6 +100,8 @@ namespace Planetnineserver.Controllers
                     Gravity = x.Gravity,
                     UserId = x.UserId,
                     Favorites = x.Favorites,
+                    Description = x.Description,
+                    ModelLink = x.ModelLink,
                     ImageLink = x.ImageLink,
                     Temperature = x.Temperature,
                     ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
@@ -168,6 +172,8 @@ namespace Planetnineserver.Controllers
                 Gravity = x.Gravity,
                 UserId = x.UserId,
                 PlanetId = x.PlanetId,
+                Description = x.Description,
+                ModelLink = x.ModelLink,
                 Favorites = x.Favorites,
                 ImageLink = x.ImageLink,
                 Temperature = x.Temperature,
@@ -205,6 +211,8 @@ namespace Planetnineserver.Controllers
                 UserId = x.UserId,
                 Favorites = x.Favorites,
                 ImageLink = x.ImageLink,
+                Description = x.Description,
+                ModelLink = x.ModelLink,
                 Temperature = x.Temperature,
                 ImageSource = String.Format("{0}://{1}{2}/images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageLink)
             }).ToListAsync();
