@@ -56,8 +56,8 @@
       <td>Solar System</td>
    </tr>
    <tr>
-      <td style="width: 50%;"><img src="./items/homepage.png" alt="Homepage"></td>
-      <td style="width: 50%;"><img src="./items/solar.png" alt="Solar System"></td>
+      <td style="width: 50%;"><img src="./Items/homepage.png" alt="Homepage"></td>
+      <td style="width: 50%;"><img src="./Items/solar.png" alt="Solar System"></td>
    </tr>
    </table>
 </div>
@@ -71,8 +71,8 @@
       <td>Moons</td>
    </tr>
    <tr>
-      <td style="width: 50%;"><img src="./items/planets.png"  alt="planet nine planets"></td>
-      <td style="width: 50%;"><img src="./items/moons.png" alt="planet nine moons"></td>
+      <td style="width: 50%;"><img src="./Items/planets.png"  alt="planet nine planets"></td>
+      <td style="width: 50%;"><img src="./Items/moons.png" alt="planet nine moons"></td>
    </tr>
    </table>
 </div>
@@ -96,8 +96,8 @@ Stay up to date by viewing single planets for specific discussions.
       <td>Single Moon</td>
    </tr>
    <tr>
-      <td style="width: 50%;"><img src="./items/planetsingle.png"  alt="planet nine create community"></td>
-      <td style="width: 50%;"><img src="./items/moonsingle.png"  alt="planet nine community"></td>
+      <td style="width: 50%;"><img src="./Items/planetsingle.png"  alt="planet nine create community"></td>
+      <td style="width: 50%;"><img src="./Items/moonsingle.png"  alt="planet nine community"></td>
    </tr>
    </table>
 </div>
@@ -106,13 +106,13 @@ Voyage:
 
 Get an up close look at our solar system and take that information to your crew for missions.
 
-<img src="./items/voyage.png"  alt="planet nine dilemmas">
+<img src="./Items/voyage.png"  alt="planet nine dilemmas">
 
 Fractals: 
 
 Design 3D models from your imagination. These can be organisms you've imagined in space and devices that your crew will use.
 
-<img src="./items/fractals.png"  alt="planet nine messages">
+<img src="./Items/fractals.png"  alt="planet nine messages">
 
 ## License: 
 
